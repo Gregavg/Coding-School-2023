@@ -1,4 +1,5 @@
 ﻿@page "/employeelist/details/{Id:int?}"
+@attribute [Authorize(Roles = "Manager")]
 @inject HttpClient httpClient
 @using FuelStation.Model;
 @using FuelStation.Web.Shared;

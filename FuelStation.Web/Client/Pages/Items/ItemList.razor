@@ -1,7 +1,8 @@
+@page "/itemlist"
 @inject HttpClient httpClient
+@attribute [Authorize(Roles = "Manager, Staff")]
 @inject NavigationManager navigationManager
 @inject IJSRuntime jsRuntime
-@page "/itemlist"
 @using FuelStation.Web.Shared;
 <ShopTitle></ShopTitle>
 

@@ -6,7 +6,6 @@
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
 @inject IJSRuntime jsRuntime
-@inject UserStatus userStatus
 @inject AuthenticationStateProvider authStateProvider
 
 <h3>Choose User</h3>
@@ -62,9 +61,5 @@
             await jsRuntime.InvokeVoidAsync("alert", "Invalid User Name or Password");
             return;
         }
-    }    private void LoginToPage(EmployeeType role) {
-        userStatus.Role = role;
-        navigationManager.NavigateTo("/Home");
-
-    }
+    }  
 }

@@ -16,7 +16,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddBlazoredSessionStorage();///
 builder.Services.AddScoped<AuthenticationStateProvider,CustomAuthenticationStateProvider>();///
-builder.Services.AddSingleton<UserStatus>();///////////////////////////
 builder.Services.AddAuthorizationCore();///
 
 

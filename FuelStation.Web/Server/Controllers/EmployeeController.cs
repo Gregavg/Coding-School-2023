@@ -3,8 +3,10 @@ using FuelStation.EF.Repositories;
 using FuelStation.Model;
 using FuelStation.Web.Shared;
 using FuelStation.Web.Shared.Validator;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using System.Data.Common;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -26,6 +28,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // GET: api/<EmployeeController>
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public async Task<IEnumerable<EmployeeListDto>> Get() {
             var result = await Task.Run(() => { return _employeeRepo.GetAll(); });
             var selectEmployeeList = result.Select(employee => new EmployeeListDto {
@@ -42,6 +45,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // GET: api/<EmployeeController>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Manager")]
         public async Task<EmployeeEditDto?> GetById(int id) {
             var result = await Task.Run(() => { return _employeeRepo.GetById(id); });
             if (result == null) {
@@ -62,6 +66,7 @@ namespace FuelStation.Web.Server.Controllers {
         // GET: api/<ProductsController>
         [Route("/employee/details/{id}")]
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public async Task<EmployeeDetailsDto?> GetDetailsById(int id) {
             var result = await Task.Run(() => { return _employeeRepo.GetById(id); });
             if (result is null) {
@@ -87,6 +92,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // POST api/<EmployeeController>
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> Post(EmployeeEditDto employee) {
 
             var newEmployee = new Employee(employee.Name, employee.Surname, employee.SalaryPerMonth, employee.EmployeeType, employee.HireDateStart, employee.HireDateEnd);
@@ -105,6 +111,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // PUT api/<EmployeeController>/5
         [HttpPut]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> Put(EmployeeEditDto employee) {
             var dbEmployee = await Task.Run(() => { return _employeeRepo.GetById(employee.Id); });
             if (dbEmployee == null) {
@@ -135,6 +142,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // DELETE api/<EmployeeController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Manager")]
         public async Task<ActionResult> Delete(int id) {
 
             try {

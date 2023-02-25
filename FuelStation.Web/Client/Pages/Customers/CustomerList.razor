@@ -1,10 +1,12 @@
 ﻿@page "/customerlist"
-@attribute [Authorize(Roles = "Administrator,User")]
+@attribute [Authorize(Roles = "Manager, Cashier")]
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
 @inject IJSRuntime jsRuntime
 @inject AuthenticationStateProvider authenticationStateProvider
+@using FuelStation.Web.Client.Authentication;
 @using FuelStation.Web.Shared;
+@using System.Net.Http.Headers;
 <ShopTitle></ShopTitle>
 
 
@@ -49,7 +51,7 @@
         var token = await customAuthStateProvider.GetToken();
         if (!string.IsNullOrWhiteSpace(token))
         {
-            Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
             //forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
             await LoadItemsFromServer();
         }else{
@@ -67,28 +69,28 @@
         }
     }
 
-    //private void CreateItem() {
-    //    navigationManager.NavigateTo("customerList/edit");
-    //}
+    private void CreateItem() {
+        navigationManager.NavigateTo("customerList/edit");
+    }
 
-    //private void EditItem(CustomerListDto customer) {
-    //    navigationManager.NavigateTo($"customerlist/edit/{customer.Id}");
-    //}
+    private void EditItem(CustomerListDto customer) {
+        navigationManager.NavigateTo($"customerlist/edit/{customer.Id}");
+    }
 
-    //private async Task DeleteItem(CustomerListDto customer) {
-    //    var confirm = await jsRuntime.InvokeAsync<bool>("confirm", "Delete Item. Are you sure?");
-    //    if (confirm) {
-    //        var response = await httpClient.DeleteAsync($"customer/{customer.Id}");
-    //        if (response.IsSuccessStatusCode) {
-    //            await LoadItemsFromServer();
-    //        } else {
-    //            var error = await response.Content.ReadAsStringAsync();
-    //            await jsRuntime.InvokeVoidAsync("alert", error);
-    //        }
-    //    }
-    //}
+    private async Task DeleteItem(CustomerListDto customer) {
+        var confirm = await jsRuntime.InvokeAsync<bool>("confirm", "Delete Item. Are you sure?");
+        if (confirm) {
+            var response = await httpClient.DeleteAsync($"customer/{customer.Id}");
+            if (response.IsSuccessStatusCode) {
+                await LoadItemsFromServer();
+            } else {
+                var error = await response.Content.ReadAsStringAsync();
+                await jsRuntime.InvokeVoidAsync("alert", error);
+            }
+        }
+    }
 
-    //private void DetailItem(CustomerListDto customer) {
-    //    navigationManager.NavigateTo($"customerList/details/{customer.Id}");
-    //}
+    private void DetailItem(CustomerListDto customer) {
+        navigationManager.NavigateTo($"customerList/details/{customer.Id}");
+    }
 }

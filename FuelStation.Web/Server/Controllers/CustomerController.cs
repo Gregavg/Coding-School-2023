@@ -23,7 +23,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // GET: api/<CustomersController>
         [HttpGet]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Manager, Cashier")]
         public async Task<IEnumerable<CustomerListDto>> Get() {
             var result = await Task.Run(() => { return _customerRepo.GetAll(); });
 
@@ -40,6 +40,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // GET: api/<CustomersController>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Manager, Cashier")]
         public async Task<CustomerEditDto?> GetById(int id) {
             var result = await Task.Run(() => { return _customerRepo.GetById(id); });
             if (result == null) {
@@ -59,6 +60,7 @@ namespace FuelStation.Web.Server.Controllers {
         // GET: api/<CustomersController>
         [Route("/customerlist/customer/details/{id}")]
         [HttpGet]
+        [Authorize(Roles = "Manager, Cashier")]
         public async Task<CustomerDetailsDto?> GetDetailsByCardNumber(int id) {
             var result = await Task.Run(() => { return _customerRepo.GetById(id); });
             if (result is null) {
@@ -88,6 +90,7 @@ namespace FuelStation.Web.Server.Controllers {
         // GET: api/<CustomersController>
         [Route("/customer/cardnumber/{cardnumber}")]
         [HttpGet]
+        [Authorize(Roles = "Manager, Cashier")]
         public async Task<CustomerListDto?> GetDetailsByCardNumber(string cardnumber) {
             var result = await Task.Run(() => { return _customerRepo.GetByCardNumber(cardnumber); });
             if (result is null) {
@@ -106,6 +109,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // POST api/<CustomersController>
         [HttpPost]
+        [Authorize(Roles = "Manager, Cashier")]
         public async Task<ActionResult> Post(CustomerEditDto customer) {
             var newCustomer = new Customer(customer.Name, customer.Surname, customer.CardNumber);
             try {
@@ -121,6 +125,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // PUT api/<CustomersController>/5  
         [HttpPut]
+        [Authorize(Roles = "Manager, Cashier")]
         public async Task<ActionResult> Put(CustomerEditDto customer) {
 
             if (!customer.CardNumber.StartsWith("A")) {
@@ -146,6 +151,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // DELETE api/<CustomersController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Manager, Cashier")]
         public async Task<ActionResult> Delete(int id) {
             try {
                 var result = await Task.Run(() => { return _customerRepo.GetById(id); });

@@ -1,4 +1,5 @@
 ﻿@page "/employeelist/edit/{Id:int?}"
+@attribute [Authorize(Roles = "Manager")]
 @using FuelStation.Model.Enums;
 @using FuelStation.Web.Shared;
 @inject HttpClient httpClient

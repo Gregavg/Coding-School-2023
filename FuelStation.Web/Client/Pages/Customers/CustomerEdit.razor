@@ -1,4 +1,5 @@
 ﻿@page "/customerlist/edit/{Id:int?}"
+@attribute [Authorize(Roles = "Manager, Cashier")]
 @using FuelStation.Web.Shared;
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
