@@ -1,0 +1,96 @@
+@page "/itemlist/details/{Id:int?}"
+@using FuelStation.Web.Shared;
+@inject IJSRuntime jsRuntime
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+<ShopTitle></ShopTitle>
+
+@if (isLoading) {
+        <div class="spinner-border text-secondary" role="status">
+        </div>
+} else {
+    <h3>Item Details</h3>
+        <div class="row">
+            <div class="col-md-3">
+                <label class="form-label">Code</label>
+                <input class="form-control" disabled @bind="@Item.Code" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Description</label>
+                <input class="form-control" disabled @bind="@Item.Description" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Cost</label>
+                <input class="form-control" disabled @bind="@Item.Cost" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Price</label>
+                <input class="form-control" disabled @bind="@Item.Price" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Price</label>
+                <input class="form-control" disabled @bind="@Item.Price" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Item Type</label>
+                <input class="form-control" disabled @bind="@Item.ItemType" />
+            </div>
+        </div>
+    @if (Item.TransactionLines.Count() > 0) {
+
+        <div class="row mt-5">
+            <h4 class="col-xs-6">
+                Item sold in this Transaction Lines:
+            </h4>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Item Price</th>
+                        <th>Net Value</th>
+                        <th>Discount Percentage</th>
+                        <th>Discount Value</th>
+                        <th>Total Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var transactionLine in Item.TransactionLines) {
+                        <tr>
+                            <td>@transactionLine.Quantity</td>
+                            <td>@transactionLine.ItemPrice</td>
+                            <td>@transactionLine.NetValue</td>
+                            <td>@transactionLine.DiscountPercentage</td>
+                            <td>@transactionLine.DiscountValue</td>
+                            <td>@transactionLine.TotalValue</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+        <div class="row mt-2">
+            <div class="col">
+                    <BootstrapButton ButtonType = "BootstrapButtonType.Secondary" OnClick="OnCancel">Back</BootstrapButton>
+            </div>
+        </div>
+}
+
+@code {
+    [Parameter] public int? Id { get; set; }
+    private ItemDetailsDto? Item = null!;
+    bool isLoading { get; set; } = true;
+
+    protected override async Task OnInitializedAsync() {
+
+        var tempItem = await httpClient.GetFromJsonAsync<ItemDetailsDto?>($"/itemlist/details/{Id}");
+        if (tempItem is not null) {
+            Item = tempItem;
+        }
+
+        isLoading = false;
+    }
+    private void OnCancel() {
+        navigationManager.NavigateTo("itemlist");
+    }
+
+}

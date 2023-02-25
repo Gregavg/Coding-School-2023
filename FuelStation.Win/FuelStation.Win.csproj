@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.Win.Design" Version="22.2.3" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FuelStation.EF\FuelStation.EF.csproj" />
+    <ProjectReference Include="..\FuelStation.Model\FuelStation.Model.csproj" />
+    <ProjectReference Include="..\FuelStation.Web\Client\FuelStation.Web.Client.csproj" />
+    <ProjectReference Include="..\FuelStation.Web\Server\FuelStation.Web.Server.csproj" />
+    <ProjectReference Include="..\FuelStation.Web\Shared\FuelStation.Web.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

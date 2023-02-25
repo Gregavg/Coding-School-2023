@@ -1,0 +1,70 @@
+﻿@page "/login"
+@using FuelStation.Model.Enums;
+@using FuelStation.Web.Client.Authentication;
+@using FuelStation.Web.Shared;
+@using System.Net;
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
+@inject UserStatus userStatus
+@inject AuthenticationStateProvider authStateProvider
+
+<h3>Choose User</h3>
+
+@*<td>
+<input class="form-control" @bind=@userStatus.Role  disabled/>
+</td>
+
+<div class="row col-md-4">
+ <BootstrapButton ButtonType="BootstrapButtonType.Primary" OnClick='()=> LoginToPage(EmployeeType.Manager)'>Login As Manager</BootstrapButton>
+</div>
+<br>
+<div class="row col-md-4">
+    <BootstrapButton ButtonType="BootstrapButtonType.Primary" OnClick='()=> LoginToPage(EmployeeType.Staff)'>Login As Staff</BootstrapButton>
+</div>
+<br>
+<div class="row col-md-4">
+    <BootstrapButton ButtonType="BootstrapButtonType.Primary" OnClick='()=> LoginToPage(EmployeeType.Cashier)'>Login As Cashier</BootstrapButton>
+</div>
+*@
+
+<div class="row">
+  <div class="col-lg-4 offset-lg-4 pt-4 pb-4 border">
+    <div class="mb-3 text-center">
+      <h3>LOGIN</h3>
+    </div>
+    <div class="mb-3">
+      <label>User Name</label>
+      <input @bind="loginRequest.UserName" class="form-control" placeholder="User Name" />
+    </div>
+    <div class="mb-3">
+      <label>Password</label>
+      <input @bind="loginRequest.Password" type="password" class="form-control" placeholder="Password" />
+    </div>
+    <div class="mb-3 d-grid gap-2">
+      <button @onclick="Authenticate" class="btn btn-primary">Login</button>
+    </div>
+  </div>
+</div>
+
+@code {
+    private LoginRequest loginRequest = new LoginRequest();
+
+    private async Task Authenticate() {
+        var loginResponse = await httpClient.PostAsJsonAsync<LoginRequest>("/api/Account/Login", loginRequest);
+
+        if (loginResponse.IsSuccessStatusCode) {
+            var userSession = await loginResponse.Content.ReadFromJsonAsync<UserSession>();
+            var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
+            await customAuthStateProvider.UpdateAuthenticationState(userSession);
+            navigationManager.NavigateTo("/", true);
+        } else if (loginResponse.StatusCode == HttpStatusCode.Unauthorized) {
+            await jsRuntime.InvokeVoidAsync("alert", "Invalid User Name or Password");
+            return;
+        }
+    }    private void LoginToPage(EmployeeType role) {
+        userStatus.Role = role;
+        navigationManager.NavigateTo("/Home");
+
+    }
+}
