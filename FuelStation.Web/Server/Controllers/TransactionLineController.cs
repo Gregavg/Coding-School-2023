@@ -25,7 +25,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // GET: api/<TransactionController>
         [HttpGet]
-        [Authorize(Roles = "Manager, Cashier")]
+        //[Authorize(Roles = "Manager, Cashier")]
         public async Task<IEnumerable<TransactionLineListDto>> Get() {
             var result = await Task.Run(() => _transactionLineRepo.GetAll());
 
@@ -58,7 +58,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // GET: api/<TransactionController>
         [HttpGet("{id}")]
-        [Authorize(Roles = "Manager, Cashier")]
+        //[Authorize(Roles = "Manager, Cashier")]
         public async Task<TransactionLineListDto?> GetById(int id) {
             var result = await Task.Run(() => { return _transactionLineRepo.GetById(id); });
             if (result is null) {
@@ -88,7 +88,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // PUT api/<TransactionController>/5
         [HttpPut]
-        [Authorize(Roles = "Manager, Cashier")]
+        //[Authorize(Roles = "Manager, Cashier")]
         public async Task Put(TransactionLineEditDto transactionLine) {
             var dbTransactionLine = await Task.Run(() => { return _transactionLineRepo.GetById(transactionLine.Id); });
             if (dbTransactionLine is null) {
@@ -108,7 +108,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // DELETE api/<TransactionController>/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Manager, Cashier")]
+        //[Authorize(Roles = "Manager, Cashier")]
         public async Task<ActionResult> Delete(int id) {
             try {
                 await Task.Run(() => { _transactionLineRepo.Delete(id); });

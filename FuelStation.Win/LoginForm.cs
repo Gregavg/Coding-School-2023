@@ -4,19 +4,18 @@ using FuelStation.Win.Authentication;
 using FuelStation.Web.Shared;
 using System.Net.Http.Json;
 using Microsoft.AspNetCore.Components.Authorization;
-//inject AuthenticationStateProvider AuthenticationStateProvider
 
 namespace FuelStation.Win {
     public partial class LoginForm : Form {
         private EmployeeType? _userLogin;
         private readonly HttpClient client;
-        private CustomAuthenticationStateProvider _authProvider;
+        private AuthenticationStateProvider _authProvider;
         private LoginRequest loginRequest;
 
-        public LoginForm(/*CustomAuthenticationStateProvider authProvider*/AuthenticationStateProvider authProvider) {
+        public LoginForm(AuthenticationStateProvider authProvider) {
             loginRequest = new LoginRequest();
             client = new HttpClient();
-            //_authProvider = authProvider;
+            _authProvider = authProvider;
             InitializeComponent();
             ConnectionUri connectionUri = new ConnectionUri();
             client.BaseAddress = new Uri(connectionUri.GetUri());
@@ -69,9 +68,9 @@ namespace FuelStation.Win {
             if (loginResponse.IsSuccessStatusCode) {
                 MessageBox.Show("Login Success!");
                 var userSession = await loginResponse.Content.ReadFromJsonAsync<UserSession>();
-
                 var customAuthStateProvider = (CustomAuthenticationStateProvider)_authProvider;
                 await customAuthStateProvider.UpdateAuthenticationState(userSession);
+
 
                 Close();
 

@@ -73,6 +73,7 @@
             this.gridView2.CustomizationFormBounds = new System.Drawing.Rectangle(679, 381, 264, 272);
             this.gridView2.GridControl = this.grdItems;
             this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsDetail.EnableMasterViewMode = false;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             this.gridView2.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridView2_RowDeleting);
             this.gridView2.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView2_ValidateRow);

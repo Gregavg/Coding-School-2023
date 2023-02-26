@@ -133,6 +133,7 @@
             this.colTransactionsCustomerId});
             this.gridView5.GridControl = this.grdTransactions;
             this.gridView5.Name = "gridView5";
+            this.gridView5.OptionsDetail.EnableMasterViewMode = false;
             this.gridView5.OptionsView.ShowGroupPanel = false;
             this.gridView5.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView5_CellValueChanged);
             this.gridView5.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridView5_RowDeleting);
@@ -255,6 +256,7 @@
             this.coTLTotalValue});
             this.gridView1.GridControl = this.grdTransactionLines;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsDetail.EnableMasterViewMode = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // coTLId

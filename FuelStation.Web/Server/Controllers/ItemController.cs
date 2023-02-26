@@ -26,7 +26,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // GET: api/<ItemsController>
         [HttpGet]
-        [Authorize(Roles = "Manager, Staff")]
+        //[Authorize(Roles = "Manager, Staff")]
         public async Task<IEnumerable<ItemListDto>> Get() {
             var result = await Task.Run(() => { return _itemRepo.GetAll(); });
             var selectItemList = result.Select(item => new ItemListDto {
@@ -42,7 +42,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // GET: api/<ItemsController>
         [HttpGet("{id}")]
-        [Authorize(Roles = "Manager, Staff")]
+        //[Authorize(Roles = "Manager, Staff")]
         public async Task<ItemEditDto?> GetById(int id) {
             var result = await Task.Run(() => { return _itemRepo.GetById(id); });
             if (result is null) {
@@ -62,7 +62,7 @@ namespace FuelStation.Web.Server.Controllers {
         // GET: api/<ItemsController>
         [Route("/itemlist/details/{id}")]
         [HttpGet]
-        [Authorize(Roles = "Manager, Staff")]
+        //[Authorize(Roles = "Manager, Staff")]
         public async Task<ItemDetailsDto?> GetDetailsById(int id) {
             var result = await Task.Run(() => { return _itemRepo.GetById(id); });
             if (result is null) {
@@ -95,7 +95,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // POST api/<ItemsController>
         [HttpPost]
-        [Authorize(Roles = "Manager, Staff")]
+        //[Authorize(Roles = "Manager, Staff")]
         public async Task<ActionResult> Post(ItemEditDto item) {
             var newItem = new Item(item.Code, item.Description, item.Price, item.Cost, item.ItemType);
             var newCode = _itemRepo.GetByCode(item.Code);
@@ -115,7 +115,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // PUT api/<ItemsController>/5
         [HttpPut]
-        [Authorize(Roles = "Manager, Staff")]
+        //[Authorize(Roles = "Manager, Staff")]
         public async Task<ActionResult> Put(ItemEditDto item) {
             var dbItem = await Task.Run(() => { return _itemRepo.GetById(item.Id); });
             var newCode = _itemRepo.GetByCode(item.Code);
@@ -141,7 +141,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // DELETE api/<ItemsController>/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Manager, Staff")]
+        //[Authorize(Roles = "Manager, Staff")]
         public async Task<ActionResult> Delete(int id) {
 
             try {

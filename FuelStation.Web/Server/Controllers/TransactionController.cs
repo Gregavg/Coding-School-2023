@@ -30,7 +30,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // GET: api/<TransactionController>
         [HttpGet]
-        [Authorize(Roles = "Manager, Cashier")]
+        //[Authorize(Roles = "Manager, Cashier")]
         public async Task<IEnumerable<TransactionListDto>> Get() {
             var result = await Task.Run(() => { return _transactionRepo.GetAll(); });
             var selectTransactionList = result.Select(transaction => new TransactionListDto {
@@ -46,7 +46,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // GET: api/<TransactionController>
         [HttpGet("{id}")]
-        [Authorize(Roles = "Manager, Cashier")]
+        //[Authorize(Roles = "Manager, Cashier")]
         public async Task<TransactionEditDto?> GetById(int id) {
             var result = await Task.Run(() => { return _transactionRepo.GetById(id); });
             if (result is null) {
@@ -68,7 +68,7 @@ namespace FuelStation.Web.Server.Controllers {
         // GET: api/<TransactionController>
         [Route("/transaction/customer/{id}")]
         [HttpGet]
-        [Authorize(Roles = "Manager, Cashier")]
+        //[Authorize(Roles = "Manager, Cashier")]
         public async Task<IEnumerable<TransactionListDto?>> GetDetailsById(int id) {
             var result = await Task.Run(() => { return _transactionRepo.GetCustomerTransactions(id); });
             if (result is null) {
@@ -110,7 +110,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // POST api/<TransactionController>
         [HttpPost]
-        [Authorize(Roles = "Manager, Cashier")]
+        //[Authorize(Roles = "Manager, Cashier")]
         public async Task<ActionResult> Post(TransactionEditDto transaction) {
             var newTransaction = new Transaction(transaction.TotalValue, transaction.PaymentMethod) {
                 Date = transaction.Date,
@@ -141,7 +141,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // PUT api/<TransactionController>/5
         [HttpPut]
-        [Authorize(Roles = "Manager, Cashier")]
+        //[Authorize(Roles = "Manager, Cashier")]
         public async Task Put(TransactionEditDto transaction) {
             var dbTransaction = await Task.Run(() => { return _transactionRepo.GetById(transaction.Id); });
             if (dbTransaction is null) {
@@ -158,7 +158,7 @@ namespace FuelStation.Web.Server.Controllers {
 
         // DELETE api/<TransactionController>/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Manager, Cashier")]
+        //[Authorize(Roles = "Manager, Cashier")]
         public async Task<ActionResult> Delete(int id) {
             try {
                 await Task.Run(() => { _transactionRepo.Delete(id); });

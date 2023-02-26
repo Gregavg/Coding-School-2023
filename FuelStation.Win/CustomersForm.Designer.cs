@@ -76,6 +76,7 @@
             this.gridView4.CustomizationFormBounds = new System.Drawing.Rectangle(679, 381, 264, 272);
             this.gridView4.GridControl = this.grdCustomers;
             this.gridView4.Name = "gridView4";
+            this.gridView4.OptionsDetail.EnableMasterViewMode = false;
             this.gridView4.OptionsView.ShowGroupPanel = false;
             this.gridView4.RowDeleting += new DevExpress.Data.RowDeletingEventHandler(this.gridView4_RowDeleting);
             this.gridView4.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView4_ValidateRow);
