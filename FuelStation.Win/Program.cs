@@ -13,7 +13,7 @@ namespace FuelStation.Win {
             var services = new ServiceCollection();
             services.AddScoped<CustomAuthenticationStateProvider>();
             services.AddHttpClient<CustomAuthenticationStateProvider>(client => {
-                client.BaseAddress = new Uri("https://localhost:5001/");
+                client.BaseAddress = new Uri("https://localhost:7251/");
             });
 
             var serviceProvider = services.BuildServiceProvider();
