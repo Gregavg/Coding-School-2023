@@ -5,6 +5,9 @@ using System.Security.Claims;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using DevExpress.XtraBars.Docking;
 using FuelStation.Web.Shared;
+using System.Net.Http.Json;
+using Microsoft.AspNetCore.Components.Authorization;
+using Newtonsoft.Json;
 //inject AuthenticationStateProvider AuthenticationStateProvider
 
 namespace FuelStation.Win {
@@ -65,18 +68,23 @@ namespace FuelStation.Win {
 
             loginRequest.UserName = username;
             loginRequest.Password = password;
-            var response = await client.PostAsJsonAsync("/api/Account/Login", loginRequest);
+            var loginResponse = await client.PostAsJsonAsync("/api/Account/Login", loginRequest);
 
-            if (response.IsSuccessStatusCode) {
+            if (loginResponse.IsSuccessStatusCode) {
                 MessageBox.Show("Login Success!");
-                //var user = new ClaimsPrincipal(new ClaimsIdentity(new[]
-                //{
-                //    new Claim(ClaimTypes.Name, loginModel.Username)
-                //}, "apiauth"));
+                var userSession = await loginResponse.Content.ReadFromJsonAsync<UserSession>();
 
-                //await _authProvider.MarkUserAsAuthenticated(user);
+                var responseContent = await loginResponse.Content.ReadAsStringAsync();
 
-                //MessageBox.Show("Login successful!");
+                var token = JsonConvert.DeserializeObject<UserSession>(responseContent);
+
+                //_authProvider.SetToken(token);
+                // Save the token in some secure storage, such as Windows Credentials Manager,
+                // or use your own secure storage mechanism.
+                // For simplicity, we'll just store it in memory for this example.
+                //var saveToken = CustomAuthenticationStateProvider.UpdateAuthenticationState(token);
+
+
             } else {
                 MessageBox.Show("Invalid username or password.");
                 buttonLogin.Enabled = true;

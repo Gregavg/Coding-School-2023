@@ -19,7 +19,7 @@ namespace FuelStation.Win {
 
             var serviceProvider = services.BuildServiceProvider();
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm(serviceProvider.GetService<CustomAuthenticationStateProvider>()));
+            Application.Run(new LoginForm(/*serviceProvider.GetService<CustomAuthenticationStateProvider>()*/));
         }
     }
 }
