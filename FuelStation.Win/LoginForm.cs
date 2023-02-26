@@ -1,23 +1,19 @@
 ﻿using FuelStation.Model.Enums;
 using System.Net.Http;
 using FuelStation.Win.Authentication;
-using System.Security.Claims;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using DevExpress.XtraBars.Docking;
 using FuelStation.Web.Shared;
 using System.Net.Http.Json;
 using Microsoft.AspNetCore.Components.Authorization;
-using Newtonsoft.Json;
 //inject AuthenticationStateProvider AuthenticationStateProvider
 
 namespace FuelStation.Win {
     public partial class LoginForm : Form {
         private EmployeeType? _userLogin;
         private readonly HttpClient client;
-        private readonly CustomAuthenticationStateProvider _authProvider;
+        private CustomAuthenticationStateProvider _authProvider;
         private LoginRequest loginRequest;
 
-        public LoginForm(/*CustomAuthenticationStateProvider authProvider*/) {
+        public LoginForm(/*CustomAuthenticationStateProvider authProvider*/AuthenticationStateProvider authProvider) {
             loginRequest = new LoginRequest();
             client = new HttpClient();
             //_authProvider = authProvider;
@@ -74,15 +70,11 @@ namespace FuelStation.Win {
                 MessageBox.Show("Login Success!");
                 var userSession = await loginResponse.Content.ReadFromJsonAsync<UserSession>();
 
-                var responseContent = await loginResponse.Content.ReadAsStringAsync();
+                var customAuthStateProvider = (CustomAuthenticationStateProvider)_authProvider;
+                await customAuthStateProvider.UpdateAuthenticationState(userSession);
 
-                var token = JsonConvert.DeserializeObject<UserSession>(responseContent);
+                Close();
 
-                //_authProvider.SetToken(token);
-                // Save the token in some secure storage, such as Windows Credentials Manager,
-                // or use your own secure storage mechanism.
-                // For simplicity, we'll just store it in memory for this example.
-                //var saveToken = CustomAuthenticationStateProvider.UpdateAuthenticationState(token);
 
 
             } else {

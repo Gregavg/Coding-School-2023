@@ -1,4 +1,5 @@
 using FuelStation.Win.Authentication;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FuelStation.Win {
@@ -19,7 +20,7 @@ namespace FuelStation.Win {
 
             var serviceProvider = services.BuildServiceProvider();
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm(/*serviceProvider.GetService<CustomAuthenticationStateProvider>()*/));
+            Application.Run(new LoginForm(serviceProvider.GetService<CustomAuthenticationStateProvider> ()));
         }
     }
 }
