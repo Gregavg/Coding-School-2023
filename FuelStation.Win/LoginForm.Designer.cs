@@ -23,58 +23,26 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.btnManager = new System.Windows.Forms.Button();
-            this.btnCashier = new System.Windows.Forms.Button();
-            this.btnStaff = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.textUsername = new System.Windows.Forms.TextBox();
             this.textPassword = new System.Windows.Forms.TextBox();
             this.labelUsername = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnManager
-            // 
-            this.btnManager.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnManager.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnManager.Location = new System.Drawing.Point(42, 416);
-            this.btnManager.Name = "btnManager";
-            this.btnManager.Size = new System.Drawing.Size(152, 104);
-            this.btnManager.TabIndex = 0;
-            this.btnManager.Text = "Manager Login";
-            this.btnManager.UseVisualStyleBackColor = true;
-            this.btnManager.Click += new System.EventHandler(this.btnManager_Click);
-            // 
-            // btnCashier
-            // 
-            this.btnCashier.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnCashier.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCashier.Location = new System.Drawing.Point(199, 416);
-            this.btnCashier.Name = "btnCashier";
-            this.btnCashier.Size = new System.Drawing.Size(152, 104);
-            this.btnCashier.TabIndex = 1;
-            this.btnCashier.Text = "Cashier Login";
-            this.btnCashier.UseVisualStyleBackColor = true;
-            this.btnCashier.Click += new System.EventHandler(this.btnCashier_Click);
-            // 
-            // btnStaff
-            // 
-            this.btnStaff.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnStaff.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStaff.Location = new System.Drawing.Point(358, 416);
-            this.btnStaff.Name = "btnStaff";
-            this.btnStaff.Size = new System.Drawing.Size(152, 104);
-            this.btnStaff.TabIndex = 2;
-            this.btnStaff.Text = "Staff Login";
-            this.btnStaff.UseVisualStyleBackColor = true;
-            this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
             // 
             // textUsername
             // 
             this.textUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textUsername.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textUsername.Location = new System.Drawing.Point(149, 139);
+            this.textUsername.Location = new System.Drawing.Point(150, 148);
             this.textUsername.Name = "textUsername";
             this.textUsername.Size = new System.Drawing.Size(223, 27);
             this.textUsername.TabIndex = 3;
@@ -83,7 +51,7 @@
             // 
             this.textPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.textPassword.Location = new System.Drawing.Point(149, 199);
+            this.textPassword.Location = new System.Drawing.Point(150, 208);
             this.textPassword.Name = "textPassword";
             this.textPassword.PasswordChar = '*';
             this.textPassword.Size = new System.Drawing.Size(223, 27);
@@ -92,42 +60,42 @@
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelUsername.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelUsername.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelUsername.Location = new System.Drawing.Point(150, 116);
+            this.labelUsername.Location = new System.Drawing.Point(151, 125);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(86, 20);
+            this.labelUsername.Size = new System.Drawing.Size(93, 21);
             this.labelUsername.TabIndex = 5;
             this.labelUsername.Text = "Username";
             // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPassword.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelPassword.Location = new System.Drawing.Point(150, 176);
+            this.labelPassword.Location = new System.Drawing.Point(151, 185);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(83, 20);
+            this.labelPassword.Size = new System.Drawing.Size(88, 21);
             this.labelPassword.TabIndex = 6;
             this.labelPassword.Text = "Password";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(165, 63);
+            this.label1.Location = new System.Drawing.Point(157, 82);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 24);
+            this.label1.Size = new System.Drawing.Size(216, 22);
             this.label1.TabIndex = 7;
             this.label1.Text = "Login to Your Account";
             // 
             // buttonLogin
             // 
             this.buttonLogin.BackColor = System.Drawing.Color.SeaGreen;
-            this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonLogin.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonLogin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonLogin.Location = new System.Drawing.Point(149, 260);
+            this.buttonLogin.Location = new System.Drawing.Point(150, 269);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(223, 40);
             this.buttonLogin.TabIndex = 8;
@@ -135,25 +103,85 @@
             this.buttonLogin.UseVisualStyleBackColor = false;
             this.buttonLogin.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(105, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(323, 24);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Welcome to Shark Fuel System";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label4.Location = new System.Drawing.Point(4, 388);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(276, 17);
+            this.label4.TabIndex = 11;
+            this.label4.Tag = "";
+            this.label4.Text = "Username: manager  Password: manager";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(4, 405);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(242, 17);
+            this.label2.TabIndex = 12;
+            this.label2.Tag = "";
+            this.label2.Text = "Username: staff          Password: staff";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label5.Location = new System.Drawing.Point(4, 419);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(262, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Tag = "";
+            this.label5.Text = "Username: cashier      Password: cashier";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(31, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(68, 65);
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(543, 717);
+            this.ClientSize = new System.Drawing.Size(513, 445);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.textPassword);
             this.Controls.Add(this.textUsername);
-            this.Controls.Add(this.btnStaff);
-            this.Controls.Add(this.btnCashier);
-            this.Controls.Add(this.btnManager);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "LoginForm";
             this.Text = "Shark Fuel Station Login";
             this.Load += new System.EventHandler(this.LoginForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,5 +198,10 @@
         private Label labelPassword;
         private Label label1;
         private Button buttonLogin;
+        private Label label3;
+        private Label label4;
+        private Label label2;
+        private Label label5;
+        private PictureBox pictureBox1;
     }
 }

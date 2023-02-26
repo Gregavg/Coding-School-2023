@@ -27,18 +27,30 @@ namespace FuelStation.Win {
             btnCustomers.Visible = false;
             btnTransactions.Visible = false;
             btnItems.Visible = false;
-
+            
+            labelCustomers.Visible = false;
+            labelTransactions.Visible = false;
+            labelItems.Visible = false;
+            labelItems.Location = new Point(399, 71);
+            ;
             if (_userLogin == EmployeeType.Manager) {
                 btnCustomers.Visible = true;
                 btnTransactions.Visible = true;
                 btnItems.Visible = true;
+
+                labelCustomers.Visible = true;
+                labelTransactions.Visible = true;
+                labelItems.Visible = true;
             } else if (_userLogin == EmployeeType.Staff) {
                 btnItems.Visible = true;
+                labelItems.Visible = true;
+                labelItems.Left = 100;
             } else if (_userLogin == EmployeeType.Cashier) {
                 btnCustomers.Visible = true;
                 btnTransactions.Visible = true;
+                labelCustomers.Visible = true;
+                labelTransactions.Visible = true;
             }
-
         }
 
         private void btnCustomers_Click(object sender, EventArgs e) {

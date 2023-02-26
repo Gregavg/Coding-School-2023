@@ -9,13 +9,13 @@ namespace FuelStation.Win {
     public partial class LoginForm : Form {
         private EmployeeType? _userLogin;
         private readonly HttpClient client;
-        private AuthenticationStateProvider _authProvider;
+        //private AuthenticationStateProvider _authProvider;
         private LoginRequest loginRequest;
 
-        public LoginForm(AuthenticationStateProvider authProvider) {
+        public LoginForm(/*AuthenticationStateProvider authProvider*/) {
             loginRequest = new LoginRequest();
             client = new HttpClient();
-            _authProvider = authProvider;
+            //_authProvider = authProvider;
             InitializeComponent();
             ConnectionUri connectionUri = new ConnectionUri();
             client.BaseAddress = new Uri(connectionUri.GetUri());
@@ -26,19 +26,17 @@ namespace FuelStation.Win {
         }
 
         private void btnManager_Click(object sender, EventArgs e) {
-            _userLogin = EmployeeType.Manager;
-            OpenForm(_userLogin, 583, 448);
+            OpenManager();
+
         }
 
         private void btnCashier_Click(object sender, EventArgs e) {
-            _userLogin = EmployeeType.Cashier;
-            OpenForm(_userLogin, 425, 405);
 
+            OpenCashier();
         }
 
         private void btnStaff_Click(object sender, EventArgs e) {
-            _userLogin = EmployeeType.Staff;
-            OpenForm(_userLogin, 286, 361);
+            OpenStaff();
         }
 
         private void OpenForm(EmployeeType? user, int x, int y) {
@@ -67,19 +65,35 @@ namespace FuelStation.Win {
 
             if (loginResponse.IsSuccessStatusCode) {
                 MessageBox.Show("Login Success!");
-                var userSession = await loginResponse.Content.ReadFromJsonAsync<UserSession>();
-                var customAuthStateProvider = (CustomAuthenticationStateProvider)_authProvider;
-                await customAuthStateProvider.UpdateAuthenticationState(userSession);
 
-
-                Close();
-
-
-
+                if (username == "manager" || username == "Manager") {
+                    OpenManager();
+                } else if (username == "cashier" || username == "Cashier") {
+                    OpenCashier();
+                } else if (username == "staff" || username == "Staff") {
+                    OpenStaff();
+                }
+                buttonLogin.Enabled = true;
             } else {
                 MessageBox.Show("Invalid username or password.");
                 buttonLogin.Enabled = true;
             }
         }
+
+
+        private void OpenManager() {
+            _userLogin = EmployeeType.Manager;
+            OpenForm(_userLogin, 583, 448);
+        }
+        private void OpenCashier() {
+            _userLogin = EmployeeType.Cashier;
+            OpenForm(_userLogin, 425, 405);
+        }
+        private void OpenStaff() {
+            _userLogin = EmployeeType.Staff;
+            OpenForm(_userLogin, 286, 361);
+        }
+
+
     }
 }
