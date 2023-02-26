@@ -12,7 +12,8 @@ namespace FuelStation.Win {
             // see https://aka.ms/applicationconfiguration.
             var services = new ServiceCollection();
             services.AddScoped<CustomAuthenticationStateProvider>();
-            services.AddHttpClient<CustomAuthenticationStateProvider>(client => {
+            services.AddHttpClient("api", client =>
+            {
                 client.BaseAddress = new Uri("https://localhost:7251/");
             });
 

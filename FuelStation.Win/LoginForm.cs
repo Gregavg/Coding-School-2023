@@ -14,10 +14,10 @@ namespace FuelStation.Win {
         private readonly CustomAuthenticationStateProvider _authProvider;
         private LoginRequest loginRequest;
 
-        public LoginForm(CustomAuthenticationStateProvider authProvider) {
+        public LoginForm(/*CustomAuthenticationStateProvider authProvider*/) {
             loginRequest = new LoginRequest();
             client = new HttpClient();
-            _authProvider = authProvider;
+            //_authProvider = authProvider;
             InitializeComponent();
             ConnectionUri connectionUri = new ConnectionUri();
             client.BaseAddress = new Uri(connectionUri.GetUri());
