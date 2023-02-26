@@ -1,16 +1,20 @@
 ﻿using Blazored.SessionStorage;
-using FuelStation.Web.Client.Extensions;
 using FuelStation.Web.Shared;
+using FuelStation.Win.Extensions;
 using Microsoft.AspNetCore.Components.Authorization;
+using System.Net.Http;
 using System.Security.Claims;
 
-namespace FuelStation.Web.Client.Authentication {
+namespace FuelStation.Win.Authentication {
     public class CustomAuthenticationStateProvider : AuthenticationStateProvider {
+
+        private readonly HttpClient _httpClient;
         private readonly ISessionStorageService _sessionStorage;
         private ClaimsPrincipal _anonymous = new ClaimsPrincipal(new ClaimsIdentity());
 
-        public CustomAuthenticationStateProvider(ISessionStorageService sessionStorage) {
+        public CustomAuthenticationStateProvider(ISessionStorageService sessionStorage, HttpClient httpClient) {
             _sessionStorage = sessionStorage;
+            _httpClient = httpClient;
         }
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync() {

@@ -1,20 +1,24 @@
 ﻿using FuelStation.Model.Enums;
-using FuelStation.Web.Shared;
-using Microsoft.JSInterop;
 using System.Net.Http;
-using System.Net.Http.Json;
-using System.Net;
-using Microsoft.AspNetCore.Components.Authorization;
+using FuelStation.Win.Authentication;
+using System.Security.Claims;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using DevExpress.XtraBars.Docking;
+using FuelStation.Web.Shared;
+//inject AuthenticationStateProvider AuthenticationStateProvider
 
 namespace FuelStation.Win {
     public partial class LoginForm : Form {
         private EmployeeType? _userLogin;
         private readonly HttpClient client;
+        private readonly CustomAuthenticationStateProvider _authProvider;
+        private LoginRequest loginRequest;
 
-        public LoginForm() {
-
-            InitializeComponent();
+        public LoginForm(CustomAuthenticationStateProvider authProvider) {
+            loginRequest = new LoginRequest();
             client = new HttpClient();
+            _authProvider = authProvider;
+            InitializeComponent();
             ConnectionUri connectionUri = new ConnectionUri();
             client.BaseAddress = new Uri(connectionUri.GetUri());
         }
@@ -53,24 +57,30 @@ namespace FuelStation.Win {
             buttonLogin.Enabled = false;
             string username = textUsername.Text;
             string password = textPassword.Text;
-            await Authenticate(username, password);
+            await Login(username, password);
         }
 
-        private async Task Authenticate(string username, string password) {
+        private async Task Login(string username, string password) {
 
-            //LoginRequest loginRequest = new ();
-            //var loginResponse = await client.PostAsJsonAsync<LoginRequest>("/api/Account/Login", loginRequest);
 
-            //if (loginResponse.IsSuccessStatusCode) {
-            //    var userSession = await loginResponse.Content.ReadFromJsonAsync<UserSession>();
-            //    var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
-            //    await customAuthStateProvider.UpdateAuthenticationState(userSession);
+            loginRequest.UserName = username;
+            loginRequest.Password = password;
+            var response = await client.PostAsJsonAsync("/api/Account/Login", loginRequest);
 
-            //    FormMenu formMenu = new FormMenu(user);
-            //} else if (loginResponse.StatusCode == HttpStatusCode.Unauthorized) {
-            //    await jsRuntime.InvokeVoidAsync("alert", "Invalid User Name or Password");
-            //    return;
-            //}
+            if (response.IsSuccessStatusCode) {
+                MessageBox.Show("Login Success!");
+                //var user = new ClaimsPrincipal(new ClaimsIdentity(new[]
+                //{
+                //    new Claim(ClaimTypes.Name, loginModel.Username)
+                //}, "apiauth"));
+
+                //await _authProvider.MarkUserAsAuthenticated(user);
+
+                //MessageBox.Show("Login successful!");
+            } else {
+                MessageBox.Show("Invalid username or password.");
+                buttonLogin.Enabled = true;
+            }
         }
     }
 }
