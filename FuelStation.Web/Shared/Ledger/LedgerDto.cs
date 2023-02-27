@@ -32,6 +32,6 @@ namespace FuelStation.Web.Shared {
         public void CalcTotal() {
             Total = Income - Expenses;
         }
-
+         
     }
 }
