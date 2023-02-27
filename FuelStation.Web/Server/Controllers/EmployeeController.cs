@@ -136,7 +136,7 @@ namespace FuelStation.Web.Server.Controllers {
                     }
                     return Ok();
                 } else {
-                    return BadRequest(errorMessage);
+                    return BadRequest(errorMessage);//ADF//
                 }
             }
         }
