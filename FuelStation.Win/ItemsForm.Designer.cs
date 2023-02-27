@@ -259,7 +259,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repItemButtonEdit;
         private DevExpress.XtraGrid.GridControl grdItems;
-        private Button button1;
         private PictureBox pictureBox1;
         private Label label2;
     }
