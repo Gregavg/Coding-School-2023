@@ -69,7 +69,18 @@
             this.btnDeleteTransaction = new System.Windows.Forms.Button();
             this.btnAddTransaction = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdTransactions)).BeginInit();
@@ -90,7 +101,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItemTypes)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl3
@@ -108,9 +129,9 @@
             this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Controls.Add(this.grdTransactions);
-            this.panelControl1.Location = new System.Drawing.Point(234, 69);
+            this.panelControl1.Location = new System.Drawing.Point(234, 74);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(888, 197);
+            this.panelControl1.Size = new System.Drawing.Size(807, 202);
             this.panelControl1.TabIndex = 28;
             // 
             // grdTransactions
@@ -125,7 +146,7 @@
             this.grdTransactions.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repEmployees,
             this.repositoryItemDateEdit1});
-            this.grdTransactions.Size = new System.Drawing.Size(884, 193);
+            this.grdTransactions.Size = new System.Drawing.Size(803, 198);
             this.grdTransactions.TabIndex = 1;
             this.grdTransactions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView5});
@@ -257,7 +278,7 @@
             this.panelControl2.Controls.Add(this.grdTransactionLines);
             this.panelControl2.Location = new System.Drawing.Point(234, 334);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(690, 220);
+            this.panelControl2.Size = new System.Drawing.Size(609, 220);
             this.panelControl2.TabIndex = 30;
             // 
             // grdTransactionLines
@@ -270,7 +291,7 @@
             this.grdTransactionLines.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repItemTree,
             this.repositoryItemSpinEdit1});
-            this.grdTransactionLines.Size = new System.Drawing.Size(686, 216);
+            this.grdTransactionLines.Size = new System.Drawing.Size(605, 216);
             this.grdTransactionLines.TabIndex = 1;
             this.grdTransactionLines.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -430,14 +451,16 @@
             // 
             // btnBack
             // 
-            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnBack.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(4, 308);
+            this.btnBack.Location = new System.Drawing.Point(87, -2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(227, 29);
+            this.btnBack.Size = new System.Drawing.Size(140, 48);
             this.btnBack.TabIndex = 32;
             this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // labelCustomer
@@ -455,7 +478,7 @@
             this.comboItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboItems.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboItems.FormattingEnabled = true;
-            this.comboItems.Location = new System.Drawing.Point(945, 334);
+            this.comboItems.Location = new System.Drawing.Point(864, 334);
             this.comboItems.Name = "comboItems";
             this.comboItems.Size = new System.Drawing.Size(175, 25);
             this.comboItems.TabIndex = 34;
@@ -467,7 +490,7 @@
             this.listItems.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listItems.FormattingEnabled = true;
             this.listItems.ItemHeight = 17;
-            this.listItems.Location = new System.Drawing.Point(945, 363);
+            this.listItems.Location = new System.Drawing.Point(864, 363);
             this.listItems.Name = "listItems";
             this.listItems.Size = new System.Drawing.Size(175, 191);
             this.listItems.TabIndex = 36;
@@ -477,7 +500,7 @@
             this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(945, 307);
+            this.labelControl2.Location = new System.Drawing.Point(864, 307);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(60, 24);
             this.labelControl2.TabIndex = 37;
@@ -487,7 +510,7 @@
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAdd.Location = new System.Drawing.Point(1047, 560);
+            this.btnAdd.Location = new System.Drawing.Point(966, 560);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 38;
@@ -498,78 +521,203 @@
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSave.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.Location = new System.Drawing.Point(4, 273);
+            this.btnSave.Location = new System.Drawing.Point(79, -1);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(227, 29);
+            this.btnSave.Size = new System.Drawing.Size(155, 47);
             this.btnSave.TabIndex = 39;
             this.btnSave.Text = "Save Transaction";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDeleteTransactionLines
             // 
+            this.btnDeleteTransactionLines.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.btnDeleteTransactionLines.FlatAppearance.BorderSize = 0;
+            this.btnDeleteTransactionLines.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteTransactionLines.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDeleteTransactionLines.Location = new System.Drawing.Point(3, 240);
+            this.btnDeleteTransactionLines.Location = new System.Drawing.Point(83, 0);
             this.btnDeleteTransactionLines.Name = "btnDeleteTransactionLines";
-            this.btnDeleteTransactionLines.Size = new System.Drawing.Size(228, 27);
+            this.btnDeleteTransactionLines.Size = new System.Drawing.Size(151, 46);
             this.btnDeleteTransactionLines.TabIndex = 40;
             this.btnDeleteTransactionLines.Text = "Delete Item";
-            this.btnDeleteTransactionLines.UseVisualStyleBackColor = true;
+            this.btnDeleteTransactionLines.UseVisualStyleBackColor = false;
             this.btnDeleteTransactionLines.Click += new System.EventHandler(this.btnDeleteTransactionLines_Click);
             // 
             // btnDeleteTransaction
             // 
+            this.btnDeleteTransaction.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.btnDeleteTransaction.FlatAppearance.BorderSize = 0;
+            this.btnDeleteTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteTransaction.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnDeleteTransaction.Location = new System.Drawing.Point(3, 207);
+            this.btnDeleteTransaction.Location = new System.Drawing.Point(87, 0);
             this.btnDeleteTransaction.Name = "btnDeleteTransaction";
-            this.btnDeleteTransaction.Size = new System.Drawing.Size(228, 27);
+            this.btnDeleteTransaction.Size = new System.Drawing.Size(140, 46);
             this.btnDeleteTransaction.TabIndex = 41;
             this.btnDeleteTransaction.Text = "Delete Transaction";
-            this.btnDeleteTransaction.UseVisualStyleBackColor = true;
+            this.btnDeleteTransaction.UseVisualStyleBackColor = false;
             this.btnDeleteTransaction.Click += new System.EventHandler(this.btnDeleteTransaction_Click);
             // 
             // btnAddTransaction
             // 
+            this.btnAddTransaction.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.btnAddTransaction.FlatAppearance.BorderSize = 0;
+            this.btnAddTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddTransaction.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAddTransaction.Location = new System.Drawing.Point(3, 174);
+            this.btnAddTransaction.Location = new System.Drawing.Point(87, 0);
             this.btnAddTransaction.Name = "btnAddTransaction";
-            this.btnAddTransaction.Size = new System.Drawing.Size(228, 27);
+            this.btnAddTransaction.Size = new System.Drawing.Size(140, 46);
             this.btnAddTransaction.TabIndex = 42;
             this.btnAddTransaction.Text = "New Transaction";
-            this.btnAddTransaction.UseVisualStyleBackColor = true;
+            this.btnAddTransaction.UseVisualStyleBackColor = false;
             this.btnAddTransaction.Click += new System.EventHandler(this.btnAddTransaction_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.panel1.Controls.Add(this.btnBack);
-            this.panel1.Controls.Add(this.btnDeleteTransaction);
-            this.panel1.Controls.Add(this.btnAddTransaction);
-            this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Controls.Add(this.btnDeleteTransactionLines);
-            this.panel1.Location = new System.Drawing.Point(0, -3);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.pictureBox7);
+            this.panel1.Controls.Add(this.panel6);
+            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(230, 701);
+            this.panel1.Size = new System.Drawing.Size(230, 684);
             this.panel1.TabIndex = 43;
             // 
-            // pictureBox1
+            // label1
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1116, -3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(68, 74);
-            this.pictureBox1.TabIndex = 43;
-            this.pictureBox1.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(74, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(149, 19);
+            this.label1.TabIndex = 48;
+            this.label1.Text = "Shark Fuel Station";
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(68, 72);
+            this.pictureBox7.TabIndex = 47;
+            this.pictureBox7.TabStop = false;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.panel6.Controls.Add(this.pictureBox6);
+            this.panel6.Controls.Add(this.btnDeleteTransaction);
+            this.panel6.Location = new System.Drawing.Point(0, 230);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(234, 46);
+            this.panel6.TabIndex = 46;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(12, 0);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(68, 46);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 33;
+            this.pictureBox6.TabStop = false;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.panel5.Controls.Add(this.pictureBox5);
+            this.panel5.Controls.Add(this.btnDeleteTransactionLines);
+            this.panel5.Location = new System.Drawing.Point(0, 178);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(234, 46);
+            this.panel5.TabIndex = 45;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(12, 0);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(68, 43);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 33;
+            this.pictureBox5.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.panel4.Controls.Add(this.pictureBox4);
+            this.panel4.Controls.Add(this.btnSave);
+            this.panel4.Location = new System.Drawing.Point(0, 126);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(234, 46);
+            this.panel4.TabIndex = 45;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(12, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(68, 43);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 40;
+            this.pictureBox4.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.panel3.Controls.Add(this.pictureBox3);
+            this.panel3.Controls.Add(this.btnAddTransaction);
+            this.panel3.Location = new System.Drawing.Point(0, 74);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(231, 46);
+            this.panel3.TabIndex = 44;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(81, 46);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 33;
+            this.pictureBox3.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.btnBack);
+            this.panel2.Location = new System.Drawing.Point(0, 638);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(234, 46);
+            this.panel2.TabIndex = 43;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(81, 46);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 33;
+            this.pictureBox2.TabStop = false;
             // 
             // TransactionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1185, 696);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(1104, 684);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.labelControl2);
@@ -605,7 +753,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItemTypes)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -657,6 +816,17 @@
         private DevExpress.XtraGrid.Columns.GridColumn coTLDiscountValue;
         private DevExpress.XtraGrid.Columns.GridColumn coTLTotalValue;
         private Panel panel1;
-        private PictureBox pictureBox1;
+        private Panel panel2;
+        private PictureBox pictureBox2;
+        private Panel panel3;
+        private Panel panel5;
+        private PictureBox pictureBox5;
+        private Panel panel4;
+        private PictureBox pictureBox4;
+        private PictureBox pictureBox3;
+        private Panel panel6;
+        private PictureBox pictureBox6;
+        private Label label1;
+        private PictureBox pictureBox7;
     }
 }

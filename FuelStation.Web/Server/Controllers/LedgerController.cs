@@ -25,29 +25,27 @@ namespace FuelStation.Web.Server.Controllers {
         //[Route("/ledgerlist/{Rent}")]
         [HttpGet("{rent}")]
         public async Task<IEnumerable<LedgerDto>> Get(int rent) {
-            var result = await Task.Run(() => { return _transactionRepo.GetAll(); });
+            var transactionList = await Task.Run(() => { return _transactionRepo.GetAll(); });
 
-            List<Ledger> monthlyLedgers = new List<Ledger>();
-
-            if (result == null) {
+            if (transactionList == null) {
                 return null;
             }
-
-            var transactionList = _transactionRepo.GetAll();
+            List<LedgerDto> monthlyLedgers = new List<LedgerDto>();
 
             var employees = _employeeRepo.GetAll();
 
+
             DateTime dateTimeNow = DateTime.Now;
 
-            var currentLedger = transactionList.Min(t => t.Date);
+            var startingLedger = transactionList.Min(t => t.Date);
 
-            int totalMonths = ((dateTimeNow.Year - currentLedger.Year) * 12) + dateTimeNow.Month - currentLedger.Month;
+            int totalMonths = ((dateTimeNow.Year - startingLedger.Year) * 12) + dateTimeNow.Month - startingLedger.Month;
 
             for (var i = 0; i < totalMonths + 1; i++) {
-                var ledger = new Ledger(currentLedger);
+                var ledger = new LedgerDto(startingLedger);
                 ledger.AddExpense(rent);
                 monthlyLedgers.Add(ledger);
-                currentLedger = currentLedger.AddMonths(1);
+                startingLedger = startingLedger.AddMonths(1);
             }
 
             foreach (var ledger in monthlyLedgers) {
@@ -67,15 +65,8 @@ namespace FuelStation.Web.Server.Controllers {
                 }
 
             }
-            
-            var ledgerDto = monthlyLedgers.Select(item => new LedgerDto {
-                Month = item.Month,
-                Year = item.Year,
-                Expenses= item.Expenses,
-                Income= item.Income,
-                Total= item.Income - item.Expenses,
-            });
-            return ledgerDto;
+
+            return monthlyLedgers;
         }
     }
 }
