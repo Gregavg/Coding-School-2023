@@ -56,15 +56,17 @@ namespace FuelStation.Web.Shared.Validator {
                 var staff = employees.Where(e => e.EmployeeType == EmployeeType.Staff && e.HireDateEnd == null);
                 var managers = employees.Where(e => e.EmployeeType == EmployeeType.Manager && e.HireDateEnd == null);
 
-                if (NewType == EmployeeType.Manager && managers.Count() >= ManagersLimits.Max) {
+
+                if (NewType == EmployeeType.Manager && (managers.Any(manager => manager.Id == dbEmployee.Id) ? managers.Count() - 1 : managers.Count()) >= ManagersLimits.Max) {
+                    
                     errorMessage = $"You already have {ManagersLimits.Max} Managers. Max number of managers is {ManagersLimits.Max}";
                     ret = false;
                 }
-                if (NewType == EmployeeType.Cashier && cashiers.Count() >= CashiersLimits.Max) {
+                if (NewType == EmployeeType.Cashier && (cashiers.Any(cashier => cashier.Id == dbEmployee.Id) ? cashiers.Count() - 1 : cashiers.Count()) >= CashiersLimits.Max) {
                     errorMessage = $"You already have {CashiersLimits.Max} cashiers. Max number of cashiers is {CashiersLimits.Max}";
                     ret = false;
                 }
-                if (NewType == EmployeeType.Staff && staff.Count() >= StaffLimits.Max) {
+                if (NewType == EmployeeType.Staff && (staff.Any(staf => staf.Id == dbEmployee.Id) ? staff.Count() - 1 : staff.Count()) >= StaffLimits.Max) {
                     errorMessage = $"You already have {StaffLimits.Max} Staff. Max number of Staff is {StaffLimits.Max}";
                     ret = false;
                 }
@@ -138,26 +140,6 @@ namespace FuelStation.Web.Shared.Validator {
 
             return ret;
         }
-
-        public bool ValidateUpdateItem(List<TransactionLine> transactionLines, Item updatedItem, Item item, out string errorMessage) {
-            bool ret = true;
-            //if(updatedItem.Id == item.Id && 
-            //    updatedItem.ItemType == item.ItemType ) { }
-            
-            
-            foreach(var transactionLine in transactionLines) {
-                if(transactionLine.ItemId == updatedItem.Id) {
-                    ret = false;
-                    errorMessage = "Item can not be updated as it exists in transaction";
-                    return ret;
-                }
-            }
-
-
-            errorMessage = "Success";
-            return ret;
-        }
-
     }
 
     public struct MinMax {

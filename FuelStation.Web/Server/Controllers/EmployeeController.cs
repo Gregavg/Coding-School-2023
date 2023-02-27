@@ -118,6 +118,7 @@ namespace FuelStation.Web.Server.Controllers {
                 return BadRequest($"Employee not found");
 
             } else {
+                dbEmployee.Id= employee.Id;
                 dbEmployee.Name = employee.Name;
                 dbEmployee.Surname = employee.Surname;
                 dbEmployee.SalaryPerMonth = employee.SalaryPerMonth;
@@ -125,8 +126,8 @@ namespace FuelStation.Web.Server.Controllers {
                 dbEmployee.HireDateEnd = employee.HireDateEnd;
 
                 if (_validator.ValidateUpdateEmployee(employee.EmployeeType, dbEmployee, _employeeRepo.GetAll().ToList(), out errorMessage)) {
+                dbEmployee.EmployeeType = employee.EmployeeType;
 
-                    dbEmployee.EmployeeType = employee.EmployeeType;
                     try {
                         _employeeRepo.Update(employee.Id, dbEmployee);
                     }
