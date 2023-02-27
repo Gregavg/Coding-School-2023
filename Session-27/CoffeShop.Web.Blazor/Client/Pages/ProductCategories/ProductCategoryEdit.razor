@@ -1,0 +1,75 @@
+﻿@page "/productcategorylist/edit/{Id:int?}"
+@using CoffeShop.Web.Blazor.Shared;
+@using CoffeeShop.Model.Enums;
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+<PageTitle>Coffee Shop</PageTitle>
+<h3>Product Category Edit</h3>
+
+@if (ProductCategory == null) {
+    <div class="spinner-border text-secondary" role="status">
+    </div>
+} else {
+        <EditForm Model="ProductCategory" OnValidSubmit="OnSave">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Code</label>
+                    <InputText class="form-control" @bind-Value="@ProductCategory.Code" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Description</label>
+                    <InputText class="form-control" @bind-Value="@ProductCategory.Description" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Product Type</label>
+                        <InputSelect class="form-control" @bind-Value="ProductCategory.ProductType">
+                        @foreach (var enumValue in Enum.GetValues<ProductType>()) {
+                            <option value="@enumValue">@enumValue</option>
+                        }
+                </InputSelect>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <BootstrapButton ButtonType = "BootstrapButtonType.Success" IsSubmit="true">Save</BootstrapButton>
+                    <BootstrapButton ButtonType = "BootstrapButtonType.Secondary" OnClick="OnCancel">Back</BootstrapButton>
+                </div>
+
+            </div>
+        </EditForm>
+}
+
+
+@code {
+    [Parameter] public int? Id { get; set; }
+    ProductCategoryEditDto? ProductCategory { get; set; }
+
+    protected override async Task OnInitializedAsync() {
+        if (Id == null) {
+            ProductCategory = new();
+        } else {
+            ProductCategory = await httpClient.GetFromJsonAsync<ProductCategoryEditDto>($"productCategory/{Id}");
+            if (ProductCategory is null) {
+                // TODO: if ProductCategory is null
+            }
+        }
+    }
+
+    private void OnCancel() {
+        navigationManager.NavigateTo("productCategoryList");
+    }
+
+    private async Task OnSave() {
+        HttpResponseMessage? response = null;
+        if (Id == null) {
+            response = await httpClient.PostAsJsonAsync("productCategory", ProductCategory);
+        } else {
+            response = await httpClient.PutAsJsonAsync("productCategory", ProductCategory);
+        }
+
+        response.EnsureSuccessStatusCode();
+        navigationManager.NavigateTo("/productCategorylist");
+    }
+}

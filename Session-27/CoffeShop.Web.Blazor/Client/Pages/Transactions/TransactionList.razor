@@ -1,0 +1,130 @@
+﻿@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
+@page "/transactionlist"
+@using CoffeShop.Web.Blazor.Shared;
+@using CoffeeShop.Model;
+<PageTitle>Coffee Shop</PageTitle>
+<h3>Transactions</h3>
+
+@if (isLoading) {
+    <div class="spinner-border text-secondary" role="status">
+    </div>
+} else {
+         <BootstrapButton ButtonType="BootstrapButtonType.Success" OnClick="CreateItem">Create</BootstrapButton>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Total Price</th>
+                <th>Payment Method</th>
+                <th>Customer</th>
+                <th>Employee</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaction in transactionList) {
+                <tr>
+                    <td>@transaction.Date</td>
+                    <td>@transaction.TotalPrice</td>
+                    <td>@transaction.PaymentMethod</td>
+                    @*                    @if (@transaction.PaymentMethod = CoffeeShop.Model.Enums.PaymentMethod.CreditCard)
+            {
+            <div class="nav-item px-3">
+            <NavLink class="nav-link" href="PaymentMethod">
+            <span class="oi oi-cart" aria-hidden="true"></span> PaymentMethod
+            </NavLink>
+            </div>
+            }*@
+                    <td>@GetCustomerDescriptionWithId(transaction.CustomerId)</td>
+                    <td>@GetEmployeeNameWithId(transaction.EmployeeId)</td>
+                    <td>
+                        <BootstrapButton ButtonType="BootstrapButtonType.Warning" OnClick="()=> EditItem(transaction)">Edit</BootstrapButton>
+                        <BootstrapButton ButtonType="BootstrapButtonType.Primary" OnClick="()=> DetailItem(transaction)">Details</BootstrapButton>
+                        <BootstrapButton ButtonType="BootstrapButtonType.Danger" OnClick="()=> DeleteItem(transaction)">Delete</BootstrapButton>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<TransactionListDto> transactionList = new();
+    private List<CustomerListDto> customerList = new();
+    private List<EmployeeListDto> employeeList = new();
+    bool isLoading { get; set; } = true;
+
+    protected override async Task OnInitializedAsync() {
+        await LoadItemsFromServer();
+        isLoading = false;
+    }
+
+    private async Task LoadItemsFromServer() {
+        var tempTransactionList = await httpClient.GetFromJsonAsync<List<TransactionListDto>>("transaction");
+        if (tempTransactionList is null) {
+            //TODO
+        } else {
+            transactionList = tempTransactionList;
+        }
+        var tempCustomerList = await httpClient.GetFromJsonAsync<List<CustomerListDto>>("customer");
+        if (tempCustomerList is not null) {
+            customerList = tempCustomerList;
+        } else {
+            // TODO: if tempCustomerList is null
+        }
+        var tempEmployeeList = await httpClient.GetFromJsonAsync<List<EmployeeListDto>>("employee");
+        if (tempEmployeeList is not null) {
+            employeeList = tempEmployeeList;
+        } else {
+            // TODO: if tempCustomerList is null
+        }
+    }
+
+    private string GetCustomerDescriptionWithId(int customerId) {
+        var customer = customerList.Where(c => c.Id == customerId).SingleOrDefault();
+        if (customer is null) {
+            //TODO: handle if customer is null
+            return "";
+        } else {
+            return customer.Description;
+        }
+    }
+
+    private String GetEmployeeNameWithId(int employeeId) {
+        var employee = employeeList.Where(e => e.Id == employeeId).SingleOrDefault();
+        if (employee is null) {
+            //TODO: handle if customer is null
+            return "";
+        } else {
+            return $"{employee.Surname} {employee.Name}";
+        }
+    }
+
+    private void CreateItem() {
+        navigationManager.NavigateTo("transactionList/edit");
+    }
+
+    private void EditItem(TransactionListDto transaction) {
+        navigationManager.NavigateTo($"transactionlist/edit/{transaction.Id}");
+    }
+
+    private async Task DeleteItem(TransactionListDto transaction) {
+        var confirm = await jsRuntime.InvokeAsync<bool>("confirm", "Delete Transaction. This task will delete all dependend transactionLines. Are you sure?");
+        if (confirm) {
+            var response = await httpClient.DeleteAsync($"transaction/{transaction.Id}");
+            if (response.IsSuccessStatusCode) {
+                await LoadItemsFromServer();
+            } else {
+                var error = await response.Content.ReadAsStringAsync();
+                await jsRuntime.InvokeVoidAsync("alert",error);
+            }
+        }
+    }
+
+    private void DetailItem(TransactionListDto transaction)
+    {
+        navigationManager.NavigateTo($"transactionlist/details/{transaction.Id}");
+    }
+}

@@ -1,0 +1,221 @@
+﻿@model Session_23.Models.Transaction.TransactionDetailsDto;
+
+@{
+    ViewData["Title"] = "Details Transaction";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Transaction</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Surname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Employee.Surname)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pet)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pet.Breed)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pet.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pet.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PetFood)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PetFood.AnimalType)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PetFoodQty)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PetFoodQty)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PetFoodPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PetFoodPrice)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+@if (Model.Customer != null) {
+ <hr />
+ <div>
+    <h5>Customer:</h5>
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customer.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customer.Surname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customer.Phone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Customer.Tin)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>  
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Customer.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Customer.Surname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Customer.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Customer.Tin)
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</div>
+}
+@if (Model.Employee != null) {
+     <div>
+        <h5>Employee:</h5>
+            <hr />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                        @Html.DisplayNameFor(model => model.Employee.Name)
+                        </th>
+                        <th>
+                        @Html.DisplayNameFor(model => model.Employee.Surname)
+                        </th>
+                        <th>
+                        @Html.DisplayNameFor(model => model.Employee.EmployeeType)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>  
+                        <tr>
+                            <td>
+                        @Html.DisplayFor(model => model.Employee.Name)
+                            </td>
+                            <td>
+                        @Html.DisplayFor(model => model.Employee.Surname)
+                            </td>
+                            <td>
+                        @Html.DisplayFor(model => model.Employee.EmployeeType)
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+    </div>
+}
+@if (Model.Pet != null) {
+         <div>
+            <h5>Pet:</h5>
+                <hr />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                        @Html.DisplayNameFor(model => model.Pet.Breed)
+                            </th>
+                            <th>
+                        @Html.DisplayNameFor(model => model.Pet.AnimalType)
+                            </th>
+                                <th>
+                        @Html.DisplayNameFor(model => model.Pet.Cost)
+                                </th>
+                            <th>
+                        @Html.DisplayNameFor(model => model.Pet.Price)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>  
+                    <tr>
+                         <td>
+                            @Html.DisplayFor(model => model.Pet.Breed)
+                         </td>
+                         <td>
+                            @Html.DisplayFor(model => model.Pet.AnimalType)
+                         </td>
+                         <td>
+                            @Html.DisplayFor(model => model.Pet.Cost)
+                         </td>
+                         <td>
+                            @Html.DisplayFor(model => model.Pet.Price)
+                         </td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+}
+@if (Model.PetFood != null) {
+             <div>
+                <h5>Pet Food:</h5>
+                    <hr />
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                        @Html.DisplayNameFor(model => model.PetFood.AnimalType)
+                                </th>
+                                    <th>
+                        @Html.DisplayNameFor(model => model.PetFood.Cost)
+                                    </th>
+                                <th>
+                        @Html.DisplayNameFor(model => model.PetFood.Price)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>  
+                        <tr>
+                             <td>
+                        @Html.DisplayFor(model => model.PetFood.AnimalType)
+                             </td>
+                             <td>
+                        @Html.DisplayFor(model => model.PetFood.Cost)
+                             </td>
+                             <td>
+                        @Html.DisplayFor(model => model.PetFood.Price)
+                             </td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>
+}

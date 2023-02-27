@@ -1,0 +1,59 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.container-dir-row {
+    flex-direction: row;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.selected {
+    background-color: lightgray;
+    font-weight: bold;
+}
+
+.reversed {
+    display: flex;
+}
+
+.reversed .reversed-form{
+padding-right: 1rem;
+padding-top: 1rem;
+}
+
+.reversed-label{
+    padding: 0;
+}
+
+
+
+.task-form{
+    display: flex;
+    width: 50rem;
+}
+
+.task-form div{
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    
+}
+
+.task button{
+    width: 80px;
+}
+
+.task-selected h3{
+    text-decoration: underline;
+    margin-bottom: 0rem;
+}

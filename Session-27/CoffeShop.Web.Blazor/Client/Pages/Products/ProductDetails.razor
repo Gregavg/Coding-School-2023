@@ -1,0 +1,104 @@
+@page "/productlist/details/{Id:int?}"
+@using CoffeShop.Web.Blazor.Shared;
+@using CoffeeShop.Model.Enums;
+@inject IJSRuntime jsRuntime
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+<PageTitle>Coffee Shop</PageTitle>
+<h3>Product Details</h3>
+
+@if (isLoading) {
+    <div class="spinner-border text-secondary" role="status">
+    </div>
+} else {
+    <div class="row">
+        <div class="col-md-3">
+            <label class="form-label">Code</label>
+            <input class="form-control" disabled @bind="@product.Code" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Description</label>
+            <input class="form-control" disabled @bind="@product.Description" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Cost</label>
+            <input class="form-control" disabled @bind="@product.Cost" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label class="form-label">Product Category</label>
+            <input class="form-control" disabled @bind="@productCategory.Description" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Product Category Type</label>
+            <input class="form-control" disabled @bind="@productCategory.ProductType" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Price</label>
+            <input class="form-control" disabled @bind="@product.Price" />
+        </div>
+    </div>
+    @if (product.TransactionLines.Count() > 0) {
+
+        <div class="row mt-5">
+            <h4 class="col-xs-6">
+                Transaction Lines of this Product
+            </h4>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Discount</th>
+                        <th>Price</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var transactionLine in product.TransactionLines) {
+                        <tr>
+                            <td>@transactionLine.Quantity</td>
+                            <td>@transactionLine.Discount</td>
+                            <td>@transactionLine.Price</td>
+                            <td>@transactionLine.TotalPrice</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    <div class="row mt-2">
+        <div class="col">
+                <BootstrapButton ButtonType = "BootstrapButtonType.Secondary" OnClick="OnCancel">Back</BootstrapButton>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter] public int? Id { get; set; }
+    private ProductDetailsDto product = null!;
+    private ProductCategoryEditDto? productCategory;
+    bool isLoading { get; set; } = true;
+
+    protected override async Task OnInitializedAsync() {
+        if (Id == null) {
+            product = new();
+        } else {
+            var tempProduct = await httpClient.GetFromJsonAsync<ProductDetailsDto>($"productlist/details/{Id}");
+            if (tempProduct is not null) {
+                product = tempProduct;
+            } else {
+                //TODO: if product is null
+            }
+        }
+
+        productCategory = await httpClient.GetFromJsonAsync<ProductCategoryEditDto>($"productCategory/{product.ProductCategoryId}");
+        if (productCategory is null) {
+            // TODO: if ProductCategory is null
+        }
+        isLoading = false;
+    }
+    private void OnCancel() {
+        navigationManager.NavigateTo("productlist");
+    }
+}

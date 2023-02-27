@@ -1,0 +1,95 @@
+@page "/productlist/edit/{Id:int?}"
+@using CoffeShop.Web.Blazor.Shared;
+@using CoffeeShop.Model.Enums;
+@inject IJSRuntime jsRuntime
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+<PageTitle>Coffee Shop</PageTitle>
+<h3>Product Edit</h3>
+
+@if (isLoading) {
+        <div class="spinner-border text-secondary" role="status">
+    </div>
+} else {
+    <EditForm Model="product" OnValidSubmit="OnSave">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label">Code</label>
+                <InputText class="form-control" @bind-Value="@product.Code" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Description</label>
+                <InputText class="form-control" @bind-Value="@product.Description" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Cost</label>
+                <InputNumber class="form-control" @bind-Value="@product.Cost" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Price</label>
+                <InputNumber class="form-control" @bind-Value="@product.Price" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Product Category</label>
+                <InputSelect class="form-control" @bind-Value="product.ProductCategoryId">
+                    @foreach (var productCategory in productCategoryList) {
+                        <option value="@productCategory.Id">@productCategory.Code - @productCategory.Description</option>
+                    }
+                </InputSelect>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col">
+                <BootstrapButton ButtonType = "BootstrapButtonType.Success" IsSubmit="true">Save</BootstrapButton>
+                <BootstrapButton ButtonType = "BootstrapButtonType.Secondary" OnClick="OnCancel">Back</BootstrapButton>
+            </div>
+
+        </div>
+    </EditForm>
+}
+
+
+@code {
+    [Parameter] public int? Id { get; set; }
+    private ProductEditDto product { get; set; } = null!;
+    private List<ProductCategoryListDto> productCategoryList = new();
+    bool isLoading { get; set; } = true;
+
+    protected override async Task OnInitializedAsync() {
+        if (Id == null) {
+            product = new();
+        } else {
+            var tempProduct = await httpClient.GetFromJsonAsync<ProductEditDto>($"product/{Id}");
+            if (tempProduct is not null) {
+                product = tempProduct;
+            } else {
+                //TODO: if product is null
+            }
+        }
+        var tempProductCategoryList = await httpClient.GetFromJsonAsync<List<ProductCategoryListDto>>("productCategory");
+        if (tempProductCategoryList is not null) {
+            productCategoryList = tempProductCategoryList;
+        } else {
+            // Todo: if tempProductCategoryList is not null
+        }
+        isLoading = false;
+    }
+
+    private void OnCancel() {
+        navigationManager.NavigateTo("productlist");
+    }
+
+    private async Task OnSave() {
+        HttpResponseMessage? response = null;
+        if (Id == null) {
+            response = await httpClient.PostAsJsonAsync("product", product);
+        } else {
+            response = await httpClient.PutAsJsonAsync("product", product);
+        }
+
+        response.EnsureSuccessStatusCode();
+        navigationManager.NavigateTo("/productlist");
+    }
+}

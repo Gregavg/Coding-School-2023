@@ -1,0 +1,104 @@
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
+@inject IJSRuntime jsRuntime
+@page "/productlist"
+@using CoffeShop.Web.Blazor.Shared
+<PageTitle>Coffee Shop</PageTitle>
+<h3>Products</h3>
+
+@if (isLoading) {
+    <div class="spinner-border text-secondary" role="status">
+    </div>
+} else {
+            <BootstrapButton ButtonType="BootstrapButtonType.Success" OnClick="CreateItem">Create</BootstrapButton>
+
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                        <th>Cost</th>
+                        <th>Price</th>
+                        <th>Product Category</th>
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var product in productList) {
+                    <tr>
+                        <td>@product.Code</td>
+                        <td>@product.Description</td>
+                        <td>@product.Cost</td>
+                        <td>@product.Price</td>
+                        <td>@GetProductCategoryWithId(product.ProductCategoryId)</td>
+                        <td>
+                        <BootstrapButton ButtonType = "BootstrapButtonType.Warning" OnClick="()=> EditItem(product)">Edit</BootstrapButton>
+                        <BootstrapButton ButtonType="BootstrapButtonType.Primary" OnClick="()=> DetailItem(product)">Details</BootstrapButton>
+                        <BootstrapButton ButtonType="BootstrapButtonType.Danger" OnClick="()=> DeleteItem(product)">Delete</BootstrapButton>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+}
+
+@code {
+    private List<ProductListDto> productList = new();
+    private List<ProductCategoryListDto> productCategoryList = new();
+    bool isLoading { get; set; } = true;
+
+    protected override async Task OnInitializedAsync() {
+        await LoadItemsFromServer();
+        isLoading = false;
+    }
+
+    private async Task LoadItemsFromServer() {
+
+        var tempProductList = await httpClient.GetFromJsonAsync<List<ProductListDto>>("product");
+        if (tempProductList is not null) {
+            productList = tempProductList;
+        } else {
+            // TODO: if tempCustomerList is null
+        }
+
+        var tempProductCategoryList = await httpClient.GetFromJsonAsync<List<ProductCategoryListDto>>("productcategory");
+        if (tempProductCategoryList is not null) {
+            productCategoryList = tempProductCategoryList;
+        } else {
+            // TODO: if tempCustomerList is null
+        }
+    }
+
+    private void CreateItem() {
+        navigationManager.NavigateTo("productList/edit");
+    }
+
+    private void EditItem(ProductListDto product) {
+        navigationManager.NavigateTo($"productlist/edit/{product.Id}");
+    }
+
+    private void DetailItem(ProductListDto product) {
+        navigationManager.NavigateTo($"productlist/details/{product.Id}");
+    }
+
+    private async Task DeleteItem(ProductListDto product) {
+        var confirm = await jsRuntime.InvokeAsync<bool>("confirm", "Delete Item. Are you sure?");
+        if (confirm) {
+            var response = await httpClient.DeleteAsync($"product/{product.Id}");
+            response.EnsureSuccessStatusCode();
+            await LoadItemsFromServer();
+        }
+    }
+
+
+    private String GetProductCategoryWithId(int productCategoryId) {
+        var productCategory = productCategoryList.Where(c => c.Id == productCategoryId).SingleOrDefault();
+        if (productCategory is null) {
+            //TODO: handle if customer is null
+            return "";
+        } else {
+            return productCategory.Description;
+        }
+    }
+}

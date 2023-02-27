@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Session_23.Model.Transaction>
+
+@{
+    ViewData["Title"] = "Transactions";
+}
+
+<h1>Transactions</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetFood)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetFoodQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetFoodPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pet.Breed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetFood.AnimalType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetFoodQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetFoodPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

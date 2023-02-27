@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Session-22</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <h1>Session-22</h1>
+    <hr />
+    <div class="task">
+      <label><h2>Reverse a word:</h2></label>
+      <form class="task-form">
+        <div>
+          Type a word:
+          <input id="to-reversed" type="text" />
+        </div>
+        <div>
+          Reversed:
+          <input id="reversed-word" type="text" disabled />
+        </div>
+        <div>
+          <button type="button" onclick="checkReverseWord()">Reverse</button>
+        </div>
+      </form>
+    </div>
+    <hr />
+    <div class="task">
+      <label><h2>Check palidrom:</h2></label>
+      <form class="task-form">
+        <div>
+          Type a word:
+          <input id="to-palindrom" type="text" />
+        </div>
+        <div>
+          <button type="button" onclick="checkPalindrom()">Palindrom</button>
+        </div>
+        <div>
+          <label id="palindrom-result"></label>
+        </div>
+      </form>
+    </div>
+    <hr />
+    <div class="container">
+      <label><h2>Customer Details:</h2></label>
+      <div class="task">
+        <form class="task-form">
+          <div>
+            Name:
+            <input id="customer-name" type="text" />
+          </div>
+          <div>
+            Surname:
+            <input id="customer-surname" type="text" />
+          </div>
+          <div>
+            Age:
+            <input id="customer-age" type="number" />
+          </div>
+          <div>
+            Gender:
+            <select id="customer-gender" name="customer-gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </form>
+
+        <div class="container">
+          <button type="button" style="width: 200px" onclick="addCustomer()">
+            Add Customer
+          </button>
+        </div>
+      </div>
+
+      <table id="tblCustomer">
+        <tr>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Age</th>
+          <th>Gender</th>
+        </tr>
+      </table>
+
+      <div class="task-selected">
+        <label><h3>Selected customer:</h3></label>
+        <form class="task-form">
+          <div>
+            Name:
+            <input id="selected-customer-name" type="text" disabled />
+          </div>
+          <div>
+            Surname:
+            <input id="selected-customer-surname" type="text" disabled />
+          </div>
+          <div>
+            Age:
+            <input id="selected-customer-age" type="number" disabled />
+          </div>
+          <div>
+            Gender:
+            <input
+              id="selected-customer-gender"
+              name="customer-gender"
+              disabled
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+    <hr />
+    <div class="task">
+      <label><h2>Multiply:</h2></label>
+      <form class="task-form">
+        <div>
+          Number a:
+          <input id="multi-a" type="text" />
+        </div>
+        <div>
+          Number b:
+          <input id="multi-b" type="text" />
+        </div>
+        <div>
+          <button type="button" onclick="tryMultiply()">Multiply</button>
+        </div>
+        <div>
+          <label id="multiply-result"></label>
+        </div>
+      </form>
+    </div>
+    <hr />
+    <div class="task">
+      <label><h2>Check string:</h2></label>
+      <form class="task-form">
+        <div>
+          Type a string:
+          <input id="check-string" type="text" />
+        </div>
+        <div>
+          <button type="button" onclick="checkLastNumber()">Check</button>
+        </div>
+        <div>
+          <label id="check-string-result"></label>
+        </div>
+      </form>
+    </div>
+    <hr />
+    <script src="js/script.js" defer></script>
+  </body>
+</html>
