@@ -193,9 +193,7 @@
 
         #endregion
 
-        private Button btnManager;
-        private Button btnCashier;
-        private Button btnStaff;
+
         private TextBox textUsername;
         private TextBox textPassword;
         private Label labelUsername;

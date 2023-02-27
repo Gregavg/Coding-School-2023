@@ -204,7 +204,7 @@
             this.colTransactionsTotalValue.Name = "colTransactionsTotalValue";
             this.colTransactionsTotalValue.OptionsColumn.AllowEdit = false;
             this.colTransactionsTotalValue.Visible = true;
-            this.colTransactionsTotalValue.VisibleIndex = 2;
+            this.colTransactionsTotalValue.VisibleIndex = 3;
             // 
             // colTransactionsPaymentMethod
             // 
@@ -216,7 +216,7 @@
             this.colTransactionsPaymentMethod.FieldName = "PaymentMethod";
             this.colTransactionsPaymentMethod.Name = "colTransactionsPaymentMethod";
             this.colTransactionsPaymentMethod.Visible = true;
-            this.colTransactionsPaymentMethod.VisibleIndex = 3;
+            this.colTransactionsPaymentMethod.VisibleIndex = 2;
             // 
             // colTransactionsID
             // 
@@ -354,7 +354,7 @@
             this.coTLQuantity.Name = "coTLQuantity";
             this.coTLQuantity.OptionsColumn.AllowEdit = false;
             this.coTLQuantity.Visible = true;
-            this.coTLQuantity.VisibleIndex = 2;
+            this.coTLQuantity.VisibleIndex = 1;
             // 
             // repositoryItemSpinEdit1
             // 
@@ -374,7 +374,7 @@
             this.coTLItemPrice.Name = "coTLItemPrice";
             this.coTLItemPrice.OptionsColumn.AllowEdit = false;
             this.coTLItemPrice.Visible = true;
-            this.coTLItemPrice.VisibleIndex = 1;
+            this.coTLItemPrice.VisibleIndex = 2;
             // 
             // coTLNetValue
             // 
@@ -432,7 +432,7 @@
             // 
             this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBack.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(3, 658);
+            this.btnBack.Location = new System.Drawing.Point(4, 308);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(227, 29);
             this.btnBack.TabIndex = 32;
@@ -499,9 +499,9 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.Location = new System.Drawing.Point(0, 623);
+            this.btnSave.Location = new System.Drawing.Point(4, 273);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(228, 29);
+            this.btnSave.Size = new System.Drawing.Size(227, 29);
             this.btnSave.TabIndex = 39;
             this.btnSave.Text = "Save Transaction";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -550,7 +550,7 @@
             this.panel1.Controls.Add(this.btnDeleteTransactionLines);
             this.panel1.Location = new System.Drawing.Point(0, -3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(233, 701);
+            this.panel1.Size = new System.Drawing.Size(230, 701);
             this.panel1.TabIndex = 43;
             // 
             // pictureBox1

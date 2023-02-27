@@ -53,6 +53,7 @@ namespace FuelStation.EF.Repositories {
             dbTransaction.PaymentMethod = entity.PaymentMethod;
             dbTransaction.CustomerId = entity.CustomerId;
             dbTransaction.EmployeeId = entity.EmployeeId;
+            dbTransaction.TransactionLines = entity.TransactionLines;
             context.SaveChanges();
         }
 

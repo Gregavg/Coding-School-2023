@@ -29,9 +29,9 @@
             @foreach (var employee in employeeList) {
                 @if (employee.EmployeeType == Model.Enums.EmployeeType.Manager) {
                     <tr>
-                        <td>@employee.Name</td>
+                    <td>@employee.Name</td>
                     <td>@employee.Surname</td>
-                    <td>@employee.SalaryPerMonth</td>
+                    <td>@employee.SalaryPerMonth €</td>
                     <td>@employee.EmployeeType</td>
                     <td>@employee.HireDateStart</td>
                     <td>@employee.HireDateEnd</td>
@@ -64,7 +64,7 @@
                 <tr>
                     <td>@employee.Name</td>
                     <td>@employee.Surname</td>
-                    <td>@employee.SalaryPerMonth</td>
+                    <td>@employee.SalaryPerMonth €</td>
                     <td>@employee.EmployeeType</td>
                     <td>@employee.HireDateStart</td>
                     <td>@employee.HireDateEnd</td>
@@ -97,7 +97,7 @@
                     <tr>
                     <td>@employee.Name</td>
                     <td>@employee.Surname</td>
-                    <td>@employee.SalaryPerMonth</td>
+                    <td>@employee.SalaryPerMonth €</td>
                     <td>@employee.EmployeeType</td>
                     <td>@employee.HireDateStart</td>
                     <td>@employee.HireDateEnd</td>

@@ -21,6 +21,8 @@ namespace FuelStation.Web.Shared {
         [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public decimal ItemPrice { get; set; }
 
+ 
+
         [Required]
         [Range(0, 99999999.99)]
         [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
@@ -44,6 +46,6 @@ namespace FuelStation.Web.Shared {
         // Relations
         public int TransactionId { get; set; }
         public int ItemId { get; set; }
-        public ItemListDto Item { get; set; } = null!;
+        public ItemListDto? Item { get; set; } = null!;
     }
 }

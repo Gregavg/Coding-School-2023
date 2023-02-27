@@ -139,6 +139,25 @@ namespace FuelStation.Web.Shared.Validator {
             return ret;
         }
 
+        public bool ValidateUpdateItem(List<TransactionLine> transactionLines, Item updatedItem, Item item, out string errorMessage) {
+            bool ret = true;
+            //if(updatedItem.Id == item.Id && 
+            //    updatedItem.ItemType == item.ItemType ) { }
+            
+            
+            foreach(var transactionLine in transactionLines) {
+                if(transactionLine.ItemId == updatedItem.Id) {
+                    ret = false;
+                    errorMessage = "Item can not be updated as it exists in transaction";
+                    return ret;
+                }
+            }
+
+
+            errorMessage = "Success";
+            return ret;
+        }
+
     }
 
     public struct MinMax {

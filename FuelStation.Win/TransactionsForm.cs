@@ -232,7 +232,7 @@ namespace FuelStation.Win {
 
                     if (transaction.Id > 0) {
                         await EditTransaction(transaction);
-                        await SaveTransactionLines(transaction.Id, transaction.TransactionLines);
+                        //await SaveTransactionLines(transaction.Id, transaction.TransactionLines);
 
                     } else if (transaction.Id == 0) {
                         await NewTransaction(transaction);

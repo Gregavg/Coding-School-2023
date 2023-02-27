@@ -131,9 +131,9 @@ namespace FuelStation.Web.Server.Controllers {
 
             var items = _itemRepo.GetAll();
 
-            if (_validator.ValidateAddTransaction(newTransaction, items, out errorMessage)){
+            if (_validator.ValidateAddTransaction(newTransaction, items, out errorMessage)) {
 
-            await Task.Run(() => { _transactionRepo.Add(newTransaction); });
+                await Task.Run(() => { _transactionRepo.Add(newTransaction); });
                 return Ok();
             }
             return BadRequest(errorMessage);
@@ -152,6 +152,17 @@ namespace FuelStation.Web.Server.Controllers {
             dbTransaction.PaymentMethod = transaction.PaymentMethod;
             dbTransaction.CustomerId = transaction.CustomerId;
             dbTransaction.EmployeeId = transaction.EmployeeId;
+            dbTransaction.TransactionLines = transaction.TransactionLines.Select(transactionLine => new TransactionLine(
+                    transactionLine.Quantity,
+                    transactionLine.ItemPrice,
+                    transactionLine.NetValue,
+                    transactionLine.DiscountPercentage,
+                    transactionLine.DiscountValue,
+                    transactionLine.TotalValue,
+                    transactionLine.ItemId) {
+                TransactionId = transactionLine.TransactionId,
+                Id = transactionLine.Id
+            }).ToList();
 
             await Task.Run(() => { _transactionRepo.Update(transaction.Id, dbTransaction); });
         }
