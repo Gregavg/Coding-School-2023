@@ -43,6 +43,7 @@
             this.btnCustomers.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCustomers.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCustomers.BackgroundImage")));
             this.btnCustomers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCustomers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCustomers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCustomers.Location = new System.Drawing.Point(3, 3);
             this.btnCustomers.Name = "btnCustomers";
@@ -114,6 +115,7 @@
             this.btnItems.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnItems.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnItems.BackgroundImage")));
             this.btnItems.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnItems.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnItems.Location = new System.Drawing.Point(289, 3);
             this.btnItems.Name = "btnItems";
@@ -128,6 +130,7 @@
             this.btnTransactions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTransactions.BackgroundImage")));
             this.btnTransactions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTransactions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnTransactions.Location = new System.Drawing.Point(139, 3);
             this.btnTransactions.Name = "btnTransactions";

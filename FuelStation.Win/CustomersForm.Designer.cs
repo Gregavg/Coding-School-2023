@@ -36,12 +36,15 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.bsCustomerDetails = new System.Windows.Forms.BindingSource(this.components);
             this.bsCustomers = new System.Windows.Forms.BindingSource(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCustomerDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl4
@@ -50,9 +53,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl4.Controls.Add(this.grdCustomers);
-            this.panelControl4.Location = new System.Drawing.Point(12, 49);
+            this.panelControl4.Location = new System.Drawing.Point(12, 126);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(761, 369);
+            this.panelControl4.Size = new System.Drawing.Size(1194, 463);
             this.panelControl4.TabIndex = 31;
             // 
             // grdCustomers
@@ -64,7 +67,7 @@
             this.grdCustomers.Location = new System.Drawing.Point(2, 2);
             this.grdCustomers.MainView = this.gridView4;
             this.grdCustomers.Name = "grdCustomers";
-            this.grdCustomers.Size = new System.Drawing.Size(757, 365);
+            this.grdCustomers.Size = new System.Drawing.Size(1190, 459);
             this.grdCustomers.TabIndex = 3;
             this.grdCustomers.UseEmbeddedNavigator = true;
             this.grdCustomers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -136,7 +139,7 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(12, 14);
+            this.labelControl4.Location = new System.Drawing.Point(12, 98);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(108, 24);
             this.labelControl4.TabIndex = 29;
@@ -146,7 +149,7 @@
             // 
             this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBack.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(14, 425);
+            this.btnBack.Location = new System.Drawing.Point(14, 596);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(72, 33);
             this.btnBack.TabIndex = 33;
@@ -154,12 +157,33 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(90, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 19);
+            this.label2.TabIndex = 51;
+            this.label2.Text = "Shark Fuel Station";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(72, 67);
+            this.pictureBox1.TabIndex = 50;
+            this.pictureBox1.TabStop = false;
+            // 
             // CustomersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(785, 471);
+            this.ClientSize = new System.Drawing.Size(1218, 642);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panelControl4);
             this.Controls.Add(this.labelControl4);
@@ -175,6 +199,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCustomerDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,5 +217,7 @@
         private Button btnBack;
         private BindingSource bsCustomerDetails;
         private BindingSource bsCustomers;
+        private Label label2;
+        private PictureBox pictureBox1;
     }
 }

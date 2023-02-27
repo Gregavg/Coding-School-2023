@@ -39,6 +39,8 @@
             this.bsItemDetails = new System.Windows.Forms.BindingSource(this.components);
             this.btnBack = new System.Windows.Forms.Button();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repItemButtonEdit)).BeginInit();
@@ -46,6 +48,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsItemDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // grdItems
@@ -57,7 +60,7 @@
             this.grdItems.Name = "grdItems";
             this.grdItems.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repItemButtonEdit});
-            this.grdItems.Size = new System.Drawing.Size(733, 338);
+            this.grdItems.Size = new System.Drawing.Size(954, 425);
             this.grdItems.TabIndex = 4;
             this.grdItems.UseEmbeddedNavigator = true;
             this.grdItems.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -163,7 +166,7 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(14, 19);
+            this.labelControl3.Location = new System.Drawing.Point(25, 96);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(55, 24);
             this.labelControl3.TabIndex = 17;
@@ -173,7 +176,7 @@
             // 
             this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBack.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(12, 410);
+            this.btnBack.Location = new System.Drawing.Point(12, 571);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(72, 33);
             this.btnBack.TabIndex = 19;
@@ -187,17 +190,38 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl2.Controls.Add(this.grdItems);
-            this.panelControl2.Location = new System.Drawing.Point(12, 52);
+            this.panelControl2.Location = new System.Drawing.Point(23, 126);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(737, 342);
+            this.panelControl2.Size = new System.Drawing.Size(958, 429);
             this.panelControl2.TabIndex = 24;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(72, 67);
+            this.pictureBox1.TabIndex = 25;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(90, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 19);
+            this.label2.TabIndex = 49;
+            this.label2.Text = "Shark Fuel Station";
             // 
             // ItemsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(770, 457);
+            this.ClientSize = new System.Drawing.Size(1002, 618);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.labelControl3);
@@ -214,6 +238,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bsItemDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,5 +259,8 @@
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repItemButtonEdit;
         private DevExpress.XtraGrid.GridControl grdItems;
+        private Button button1;
+        private PictureBox pictureBox1;
+        private Label label2;
     }
 }
