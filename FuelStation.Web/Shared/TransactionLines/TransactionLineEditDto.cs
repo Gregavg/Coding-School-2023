@@ -18,10 +18,12 @@ namespace FuelStation.Web.Shared {
 
         [Required]
         [Range(0, 99999999.99, ErrorMessage = "Price range is 0 to 99999999.99!")]
+        [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public decimal ItemPrice { get; set; }
 
         [Required]
         [Range(0, 99999999.99)]
+        [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public decimal NetValue { get; set; }
 
         [Required]
@@ -30,11 +32,13 @@ namespace FuelStation.Web.Shared {
 
         [Required]
         [Range(0, 99999999.99)]
+        [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public decimal DiscountValue { get; set; }
 
 
         [Required]
         [Range(0, 99999999.99)]
+        [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public decimal TotalValue { get; set; }
 
         // Relations

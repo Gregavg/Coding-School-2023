@@ -16,7 +16,7 @@ namespace FuelStation.Web.Shared {
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Date { get; set; }
 
-
+        [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public decimal TotalValue { get; set; }
         [Required]
         [Range(1, 2, ErrorMessage = "You must choose a Payment Method!")]

@@ -95,5 +95,10 @@ namespace FuelStation.Win {
         }
 
 
+        private void textPassword_KeyUp(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                button1_Click(sender, e);
+            }
+        }
     }
 }

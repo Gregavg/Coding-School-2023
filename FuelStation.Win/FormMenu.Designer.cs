@@ -40,6 +40,7 @@
             this.btnCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCustomers.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnCustomers.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCustomers.BackgroundImage")));
             this.btnCustomers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCustomers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -47,14 +48,14 @@
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(130, 124);
             this.btnCustomers.TabIndex = 0;
-            this.btnCustomers.UseVisualStyleBackColor = true;
+            this.btnCustomers.UseVisualStyleBackColor = false;
             this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
             // 
             // btnBack
             // 
             this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBack.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnBack.Location = new System.Drawing.Point(12, 360);
+            this.btnBack.Location = new System.Drawing.Point(15, 357);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(72, 29);
             this.btnBack.TabIndex = 3;
@@ -110,23 +111,29 @@
             // 
             // btnItems
             // 
+            this.btnItems.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnItems.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnItems.BackgroundImage")));
+            this.btnItems.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnItems.Location = new System.Drawing.Point(289, 3);
             this.btnItems.Name = "btnItems";
             this.btnItems.Size = new System.Drawing.Size(138, 124);
             this.btnItems.TabIndex = 6;
-            this.btnItems.UseVisualStyleBackColor = true;
+            this.btnItems.UseVisualStyleBackColor = false;
             this.btnItems.Click += new System.EventHandler(this.btnItems_Click);
             // 
             // btnTransactions
             // 
+            this.btnTransactions.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnTransactions.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTransactions.BackgroundImage")));
+            this.btnTransactions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnTransactions.Location = new System.Drawing.Point(139, 3);
             this.btnTransactions.Name = "btnTransactions";
             this.btnTransactions.Size = new System.Drawing.Size(144, 124);
             this.btnTransactions.TabIndex = 3;
-            this.btnTransactions.UseVisualStyleBackColor = true;
+            this.btnTransactions.UseVisualStyleBackColor = false;
             this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
             // 
             // labelCustomers
@@ -134,7 +141,7 @@
             this.labelCustomers.AutoSize = true;
             this.labelCustomers.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.labelCustomers.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelCustomers.Location = new System.Drawing.Point(88, 71);
+            this.labelCustomers.Location = new System.Drawing.Point(91, 74);
             this.labelCustomers.Name = "labelCustomers";
             this.labelCustomers.Size = new System.Drawing.Size(98, 21);
             this.labelCustomers.TabIndex = 6;
@@ -145,7 +152,7 @@
             this.labelTransactions.AutoSize = true;
             this.labelTransactions.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.labelTransactions.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelTransactions.Location = new System.Drawing.Point(220, 71);
+            this.labelTransactions.Location = new System.Drawing.Point(223, 74);
             this.labelTransactions.Name = "labelTransactions";
             this.labelTransactions.Size = new System.Drawing.Size(113, 21);
             this.labelTransactions.TabIndex = 7;
@@ -156,7 +163,7 @@
             this.labelItems.AutoSize = true;
             this.labelItems.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.labelItems.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelItems.Location = new System.Drawing.Point(399, 71);
+            this.labelItems.Location = new System.Drawing.Point(402, 74);
             this.labelItems.Name = "labelItems";
             this.labelItems.Size = new System.Drawing.Size(56, 21);
             this.labelItems.TabIndex = 8;
@@ -174,7 +181,10 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.btnBack);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMenu";
+            this.Padding = new System.Windows.Forms.Padding(3);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shark Fuel Station";
             this.Load += new System.EventHandler(this.FormMenu_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

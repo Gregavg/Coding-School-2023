@@ -52,7 +52,6 @@
         if (!string.IsNullOrWhiteSpace(token))
         {
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", token);
-            //forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
             await LoadItemsFromServer();
         }else{
 
