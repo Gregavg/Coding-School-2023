@@ -75,7 +75,7 @@ namespace FuelStation.Web.Shared.Validator {
                     errorMessage = $"Hire end date must be greater than start.";
                 } else if (dbEmployee.HireDateStart < dbEmployee.HireDateEnd) {
                     ret = true;
-                    errorMessage = "Succeed ";
+                    errorMessage = "Succeed "; 
                 }
             }
             return ret;
