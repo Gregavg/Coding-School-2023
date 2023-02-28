@@ -30,6 +30,7 @@ namespace FuelStation.Web.Shared {
 
         [Required]
         [Range(0, 100.00, ErrorMessage = "Range 0% to 100%!")]
+        [DisplayFormat(DataFormatString = "{0}%")]
         public decimal DiscountPercentage { get; set; }
 
         [Required]

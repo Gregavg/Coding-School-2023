@@ -19,7 +19,7 @@ namespace FuelStation.Web.Shared {
         public decimal ItemPrice { get; set; }
         [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public decimal NetValue { get; set; }
-
+        [DisplayFormat(DataFormatString = "{0}%")]
         public decimal DiscountPercentage { get; set; }
         [DisplayFormat(DataFormatString = "€{0:#,##0.00}")]
         public decimal DiscountValue { get; set; }
