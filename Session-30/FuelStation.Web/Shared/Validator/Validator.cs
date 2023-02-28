@@ -58,7 +58,6 @@ namespace FuelStation.Web.Shared.Validator {
 
 
                 if (NewType == EmployeeType.Manager && (managers.Any(manager => manager.Id == dbEmployee.Id) ? managers.Count() - 1 : managers.Count()) >= ManagersLimits.Max) {
-                    
                     errorMessage = $"You already have {ManagersLimits.Max} Managers. Max number of managers is {ManagersLimits.Max}";
                     ret = false;
                 }
