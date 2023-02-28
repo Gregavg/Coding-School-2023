@@ -123,7 +123,7 @@ namespace FuelStation.Web.Server.Controllers {
                 dbEmployee.Surname = employee.Surname;
                 dbEmployee.SalaryPerMonth = employee.SalaryPerMonth;
                 dbEmployee.HireDateStart = employee.HireDateStart;
-                dbEmployee.HireDateEnd = employee.Hire          DateEnd;
+                dbEmployee.HireDateEnd = employee.HireDateEnd;
 
                 if (_validator.ValidateUpdateEmployee(employee.EmployeeType, dbEmployee, _employeeRepo.GetAll().ToList(), out errorMessage)) {
                 dbEmployee.EmployeeType = employee.EmployeeType;
