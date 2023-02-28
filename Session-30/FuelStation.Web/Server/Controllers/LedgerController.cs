@@ -58,12 +58,12 @@ namespace FuelStation.Web.Server.Controllers {
                     if (transaction.Date.Month == ledger.Month && transaction.Date.Year == ledger.Year) {
                         foreach (var tline in transaction.TransactionLines) {
                             ledger.AddExpense(tline.Item.Cost * tline.Quantity);
-                            
+
                         }
                         ledger.AddIncome(transaction.TotalValue);
                     }
                 }
-
+                ledger.Total = ledger.Income - ledger.Expenses;
             }
 
             return monthlyLedgers;
